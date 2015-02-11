@@ -1,6 +1,8 @@
 public class Checking extends BankAccount {
 	
 	int checkNum;
+	
+
 	public void checking(int balance){
 		setBalance(balance);
 		createID();
@@ -12,5 +14,13 @@ public class Checking extends BankAccount {
 			System.out.println("You have overdrawn");
 			setBalance(getBalance() - amount);
 		}
+	}
+	
+	public int getNext(){
+		return getCheckNum()+1;
+	}
+	
+	public int getCheckNum() {
+		return checkNum;
 	}
 }

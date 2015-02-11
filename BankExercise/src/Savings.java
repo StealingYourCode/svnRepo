@@ -3,11 +3,10 @@ public class Savings extends BankAccount {
 	
 	double interestRate=0;
 
-	public void savings(int balance, int interestRate, Boolean type){//TODO: use enums
+	public void savings(int balance, int interestRate){//TODO: use enums
 		setInterestRate(interestRate);
 		setBalance(balance);
 		createID();
-		setPerson(type);
 	}
 	
 	public double getInterestRate() {
@@ -27,7 +26,7 @@ public class Savings extends BankAccount {
 	}
 	
 	public void reset(){
-		if(getPerson()==true){
+		if(getType().equals(BankAccount.Type.PERSON)){
 			setBalance(0);
 			System.out.println("Your account has been reset");
 		}

@@ -6,19 +6,19 @@ public class BankAccount {
 	double depositValue;
 	double withdrawValue;
 	
-	Boolean Person;
-
+	Type type;
+	
 	public void BankAccount(double bal) {
 		createID();
 		setBalance(bal);
 	}
 	
-	public Boolean getPerson() {
-		return Person;
+	public Type getType() {
+		return type;
 	}
 
-	public void setPerson(Boolean person) {
-		Person = person;
+	public void setType(Type type) {
+		this.type=type;
 	}
 
 	public double getWithdrawValue() {
@@ -28,8 +28,6 @@ public class BankAccount {
 	public void setWithdrawValue(double withdrawValue) {
 		this.withdrawValue = withdrawValue;
 	}
-
-	
 
 	public double getBalance() {
 		return balance;
@@ -60,5 +58,11 @@ public class BankAccount {
 	public void correction(int amount) {
 		setBalance(amount);
 	}
+	
+	public enum Type{
+		PERSON, COMPANY;
+	}
+	
+	
 
 }
