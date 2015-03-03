@@ -1,25 +1,21 @@
 package controllers;
 
-import dao.UserDAO;
 import db.UserList;
-import dto.IStorable;
 import dto.UserDTO;
 
 public class LoginController {
 	
-	UserDAO userdao = new UserDAO();
-	UserList ul = new UserList();
+//	UserDAO userdao = new UserDAO();
 	
-	public IStorable Login(String username, String password){
-		if(ul.getUserList().contains(username)){
+	public UserDTO Login(String username, String password){
+		
 			
-			for(UserDTO user: ul.getUserList()){
+			for(UserDTO user: UserList.getUserList()){
 				if(user.getUsername().equals(username)){
-					if(user.getPassword().endsWith(password))
+					if(user.getPassword().equals(password))
 						return user;
 				}
 			}
-		}
 		return null;
 	}
 

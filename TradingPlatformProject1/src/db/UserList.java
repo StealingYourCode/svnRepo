@@ -6,9 +6,9 @@ import dto.UserDTO;
 
 public class UserList {
 	
-	private ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
+	private static ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
 
-	public ArrayList<UserDTO> getUserList() {
+	public static ArrayList<UserDTO> getUserList() {
 		return userList;
 	}
 
