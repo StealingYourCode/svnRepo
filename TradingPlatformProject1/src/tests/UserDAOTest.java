@@ -1,5 +1,6 @@
 package tests;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 
 import dao.UserDAO;
 import dto.UserDTO;
+import exceptions.NoUserException;
 
 
 public class UserDAOTest {
@@ -29,26 +31,33 @@ public class UserDAOTest {
 	
 	}
 	
+	@Test
+	public void TestReadUser() throws NoUserException{
+		userdao.create(user1);
+		UserDTO newuser = userdao.read("Zvi");
+		assertTrue(newuser.equals(user1));
+	}
+	
 //	@Test
 //	public void TestCreateUserWorks(){
 //		userdao.create(user1);
 //	}
-//	
-//	@Test
-//	public void TestReadUser(){
-//		userdao.read("zvi");
-//	}
 	
-//	@Test
-//	public void TestUpdateUser(){
-//		userdao.create(user1);
-//		userdao.update(user1, user2);
-//	}
+	
 	
 	@Test
-	public void TestDeleteUser(){
+	public void TestUpdateUser() throws NoUserException{
+		userdao.create(user1);
+		userdao.update(user1, user2);
+		assertTrue(userdao.read("antonio").equals(user2));
+	}
+	
+	@Test
+	public void TestDeleteUser() throws NoUserException{
 		userdao.create(user1);
 		userdao.delete("Zvi");
+//		assertTrue(userdao.read("Zvi")==null);
+//		System.out.println("feafaef"+ UserDAO.userList.get(0));
 	}
 	
 

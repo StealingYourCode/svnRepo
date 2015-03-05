@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -17,7 +18,6 @@ import exceptions.UsernamePasswordMismatchException;
 import controllers.LoginController;
 import dao.IStorage;
 import dao.UserDAO;
-import db.UserList;
 import dto.IStorable;
 import dto.UserDTO;
 
@@ -50,24 +50,27 @@ public class LoginControllerTest {
 	}
 
 	@Test
+	public void TestLoginController_Login() throws NoUserException{
+		
+		UserDTO returnuser1 = ua.Login("person2", "password2");
+		assertTrue(returnuser1.equals(user2));
+		
+	}
+	
+	@Test
 	public void TestUsernameMatchReturnsTrue() throws NoUserException {
 
 		UserDTO returnUser=null;
 		returnUser = dao.read("Bobsaget");
 		assertTrue(returnUser.equals(user1));
 	}
-//	
-	@Test
-	public void TestLoginController_Login() throws NoUserException{
-		
-		ua.Login("Bobsaget", "Password");
-	}
 	
 	
 	@Test
-//	(expected = NoUserException.class)
+	(expected = NoUserException.class)
 	public void TestNoUserException() throws NoUserException{
-		dao.read(null);
+		UserDTO returnuser = dao.read(null);
+		assertTrue(returnuser.equals(null));
 	}
 	
 	@Test (expected = NoUserException.class)
@@ -77,8 +80,7 @@ public class LoginControllerTest {
 	}
 	
 	
-//	@Test
-//	(expected = NoUserException.class)
+//	@Test (expected = NoUserException.class)
 //	public void TestLoginLoggerExceptions() {
 //		lc.doCommand();
 //	}

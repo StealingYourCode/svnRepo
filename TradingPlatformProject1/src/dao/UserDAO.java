@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import userManager.UserActions;
-import db.UserList;
 import dto.IStorable;
 import dto.UserDTO;
 import exceptions.NoUserException;
@@ -24,10 +23,10 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 //	Random rand = new Random();
 //	int rand_num = rand.nextInt(9999) + 1;
 
-	static ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
+	 static ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
 	
 	@Override
-	public IStorable create(UserDTO user) {
+	public UserDTO create(UserDTO user) {
 		PropertyConfigurator.configure("log4j.properties");
 		log.info(user + " has been created");
 		userList.add(user);
@@ -35,13 +34,13 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 	}
 
 	@Override
-	public UserDTO read(String username){
+	public UserDTO read(String username) throws NoUserException{
+		
 		for (UserDTO user : userList) {
-
 			if (user.getUsername().equals(username))
 				return user;
 		}
-		return null;
+		throw new NoUserException("User Not found");
 	}
 
 	@Override
@@ -57,18 +56,24 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 
 
 	@Override
-	public void delete(String username) {
+	public void delete(String username) throws NoUserException {
 		// TODO Auto-generated method stub
+		UserDAO userdao = new UserDAO();
 		
+		if(userdao.read(username)==null)
+			throw new NoUserException("This user does not exist");
+			
+			
 		for(UserDTO user : userList){
 			if(user.getUsername().equals(username)){
+				
+				userList.remove(user);
 				PropertyConfigurator.configure("log4j.properties");
 				log.info(user + " has been deleted");
-				userList.remove(user);
 			}
 		}
 //		PropertyConfigurator.configure("log4j.properties");
-		log.info("This username was not found");
+		
 		
 	}
 	static Logger log = Logger.getLogger(UserDAO.class);

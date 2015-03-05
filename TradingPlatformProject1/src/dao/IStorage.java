@@ -8,11 +8,11 @@ public interface IStorage <T extends IStorable, P, I > {
 	
 	public IStorable create(T storable);
 	
-	public IStorable read(P uniquevalue);
+	public IStorable read(P uniquevalue) throws NoUserException;
 	
 	public void update(T oldstorable, T newstorable);
 	
-	public void delete(P id);
+	public void delete(P id) throws NoUserException;
 	
 
 }
