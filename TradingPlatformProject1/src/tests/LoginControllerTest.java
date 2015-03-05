@@ -26,7 +26,6 @@ public class LoginControllerTest {
 	private LoginController lc;
 	private UserDAO dao;
 	private UserActions ua = new UserActions();;
-//	private Collection<UserDTO> userList;
 	@Mock UserDTO user1, user2, user3;
 
 	@Before
@@ -35,13 +34,8 @@ public class LoginControllerTest {
 		lc = new LoginController();
 		dao = new UserDAO();
 		
-//		userList = new ArrayList<UserDTO>();
 		MockitoAnnotations.initMocks(this);
 
-//		user1 = new UserDTO("Bobsaget", "password", "fullhouse@gmail.com");
-//		user2 = new UserDTO("person2", "password2", "myemail@aol.com");
-//		user3 = new UserDTO("Andersonsilva", "hespect", "spider@gmail.com");
-//		
 		when(user1.getUsername()).thenReturn("Bobsaget");
 		when(user1.getPassword()).thenReturn("Password");
 		
@@ -49,13 +43,9 @@ public class LoginControllerTest {
 		when(user2.getPassword()).thenReturn("password2");
 		
 		
-//		UserList.getUserList().add(user1);
 		dao.create(user1);
 		dao.create(user2);
-//		dao.create(user2);
-//		dao.create(user3);
-		
-		
+
 		
 	}
 
@@ -70,12 +60,7 @@ public class LoginControllerTest {
 	@Test
 	public void TestLoginController_Login() throws NoUserException{
 		
-//		lc.doCommand();
 		ua.Login("Bobsaget", "Password");
-//		assertTrue(returnuser.getPassword().equals(user1.getPassword()));
-//		System.out.println(user1);
-//		System.out.println(ua.Login("Bobsaget", "Password"));
-//		System.out.println(returnuser);
 	}
 	
 	
@@ -91,16 +76,6 @@ public class LoginControllerTest {
 			ua.Login("Bobsaget", "Psword");
 	}
 	
-//	@Test
-//	public void TestUpdateMethod(){
-//		dao.update(user1, user2);
-//		assertTrue(.equals("person2"));
-//	}
-//	
-//	@Test
-//	public void TestLoginLogger() throws UsernamePasswordMismatchException{
-//		lc.doCommand();
-//	}
 	
 //	@Test
 //	(expected = NoUserException.class)

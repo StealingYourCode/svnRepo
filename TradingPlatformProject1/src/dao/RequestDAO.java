@@ -7,13 +7,13 @@ import dto.IStorable;
 import dto.RequestDTO;
 import exceptions.NoUserException;
 
-public class RequestDAO implements IStorage<RequestDTO, Integer>{
+public class RequestDAO implements IStorage<RequestDTO, Integer, String>{
 
 	ArrayList<RequestDTO> requestList = new ArrayList<RequestDTO>();
 	@Override
 	public IStorable create(RequestDTO newrequest) {
 		requestList.add(newrequest);
-		return null;
+		return newrequest;
 	}
 
 	@Override
@@ -32,15 +32,19 @@ public class RequestDAO implements IStorage<RequestDTO, Integer>{
 				requestList.set(i, newrequest);
 		}
 		// TODO Auto-generated method stub
-		
 	}
 
 	
 
 	@Override
-	public void delete(RequestDTO storable) {
+	public void delete(Integer id) {
 		// TODO Auto-generated method stub
+		for(RequestDTO request: requestList){
+			if(request.getRequest_id()==id)
+				requestList.remove(request);
+		}
 		
 	}
 
+	
 }
