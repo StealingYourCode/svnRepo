@@ -8,13 +8,17 @@ public class RequestDTO implements IStorable {
 		BUY, SELL;
 	}
 	
+	public enum Status{
+		
+	}
+	
 	int request_id;
 	int parent_request_id;
 	int shares_filled;
 	int shareholder_id;
 	Date request_date;
 	BuyOrSell buy_or_sell;
-	String status;
+	Status status;
 	int stock_id;
 	int shares;
 	int minimum_shares;
@@ -58,12 +62,7 @@ public class RequestDTO implements IStorable {
 	public void setBuy_or_sell(BuyOrSell buy_or_sell) {
 		this.buy_or_sell = buy_or_sell;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 	public int getStock_id() {
 		return stock_id;
 	}

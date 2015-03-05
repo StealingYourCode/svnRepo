@@ -6,55 +6,59 @@ import java.util.Random;
 import db.UserList;
 import dto.IStorable;
 import dto.UserDTO;
+import exceptions.NoUserException;
+import exceptions.UsernamePasswordMismatchException;
 
-public class UserDAO implements IStorage<UserDTO> {
+public class UserDAO implements IStorage<UserDTO, String> {
 
 	/**
 	 * DAO data access object.
 	 */
 
-//	UserList userList = new UserList();
+	// UserList userList = new UserList();
 
-	Random rand = new Random();
-	int rand_num = rand.nextInt(9999) + 1;
+//	Random rand = new Random();
+//	int rand_num = rand.nextInt(9999) + 1;
 
+	static ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
+	
 	@Override
-	public IStorable create(UserDTO user, int id) {
-		UserList.getUserList().add(user);
-		user.setUserID(id);
-		System.out
-				.println("User has been created with ID: " + user.getUserID());
+	public IStorable create(UserDTO user) {
+		userList.add(user);
 		return user;
 	}
 
 	@Override
-	public UserDTO read(UserDTO input) {
-		for (UserDTO user : UserList.getUserList()) {
-			if (user.equals(input))
+	public UserDTO read(String username){
+		for (UserDTO user : userList) {
+
+			if (user.getUsername().equals(username))
 				return user;
+
 		}
 		return null;
 	}
 
 	@Override
 	public void update(UserDTO user, UserDTO newuser) {
-		for (int i = 0; i < UserList.getUserList().size(); i++) {
-			UserList.getUserList().set(i, newuser);
+		for (int i = 0; i < userList.size(); i++) {
+			if(userList.get(i).equals(user));
+			userList.set(i, newuser);
 		}
 	}
 
 	@Override
 	public void delete(UserDTO user) {
 		System.out.println(user.getUsername() + " was deleted");
-		UserList.getUserList().remove(user);
+		userList.remove(user);
 	}
 
 	public UserDTO searchUser(int UserID) {
 		UserDTO user = null;
-		for (int i = 0; i < UserList.getUserList().size(); i++) {
+		for (int i = 0; i < userList.size(); i++) {
 
-			if (UserList.getUserList().get(i).getUserID() == UserID)
-				user = UserList.getUserList().get(i);
+			if (userList.get(i).getUserID() == UserID)
+				user = userList.get(i);
 		}
 		return user;
 	}

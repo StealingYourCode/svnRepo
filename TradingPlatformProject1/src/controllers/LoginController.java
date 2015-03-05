@@ -1,22 +1,20 @@
 package controllers;
 
+import commands.LoginCommand;
+
+import interfaces.ICommand;
+import exceptions.NoUserException;
+import dao.UserDAO;
 import db.UserList;
 import dto.UserDTO;
 
 public class LoginController {
 	
-//	UserDAO userdao = new UserDAO();
 	
-	public UserDTO Login(String username, String password){
-		
-			
-			for(UserDTO user: UserList.getUserList()){
-				if(user.getUsername().equals(username)){
-					if(user.getPassword().equals(password))
-						return user;
-				}
-			}
-		return null;
+	private ICommand command1;
+	private LoginCommand logincommand = new LoginCommand();
+	
+	public void doCommand(){
+		 logincommand.execute();
 	}
-
 }
