@@ -11,7 +11,7 @@ public class LoginController {
 	
 	
 	private ICommand command1;
-	private LoginCommand logincommand = new LoginCommand();
+	private LoginCommand logincommand = new LoginCommand("person2", "password2");
 	
 	public void doCommand(){
 		 logincommand.execute();

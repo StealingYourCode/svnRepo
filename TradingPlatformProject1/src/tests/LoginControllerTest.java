@@ -3,38 +3,35 @@ package tests;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import userManager.UserActions;
-import exceptions.NoUserException;
-import exceptions.UsernamePasswordMismatchException;
 import controllers.LoginController;
-import dao.IStorage;
 import dao.UserDAO;
-import dto.IStorable;
 import dto.UserDTO;
+import exceptions.NoUserException;
 
 public class LoginControllerTest {
 
 	private LoginController lc;
-	private UserDAO dao;
+//	private UserDAO dao;
 	private UserActions ua = new UserActions();;
 	@Mock UserDTO user1, user2, user3;
+	@Mock UserDAO dao;
 
 	@Before
 	public void setUp(){
 
 		lc = new LoginController();
-		dao = new UserDAO();
+//		dao = new UserDAO();
 		
 		MockitoAnnotations.initMocks(this);
+		
+		dao.create(user1);
+		dao.create(user2);
 
 		when(user1.getUsername()).thenReturn("Bobsaget");
 		when(user1.getPassword()).thenReturn("Password");
@@ -43,8 +40,7 @@ public class LoginControllerTest {
 		when(user2.getPassword()).thenReturn("password2");
 		
 		
-		dao.create(user1);
-		dao.create(user2);
+		
 
 		
 	}
@@ -52,8 +48,8 @@ public class LoginControllerTest {
 	@Test
 	public void TestLoginController_Login() throws NoUserException{
 		
-		UserDTO returnuser1 = ua.Login("person2", "password2");
-		assertTrue(returnuser1.equals(user2));
+		UserDTO returnuser1 = ua.Login("Bobsaget", "Password");
+		assertEquals(user1, returnuser1);
 		
 	}
 	
@@ -81,7 +77,12 @@ public class LoginControllerTest {
 	
 	
 //	@Test (expected = NoUserException.class)
-//	public void TestLoginLoggerExceptions() {
+//	public void TestLoginLoggerCatchesExceptions() {
+//		lc.doCommand();
+//	}
+	
+//	@Test 
+//	public void TestLoginControllerSuccessful() {
 //		lc.doCommand();
 //	}
 	

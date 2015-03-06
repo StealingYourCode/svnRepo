@@ -3,18 +3,15 @@ package userManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import exceptions.InvalidInputException;
-import exceptions.NoUserException;
-import exceptions.UsernamePasswordMismatchException;
 import dao.UserDAO;
 import dto.UserDTO;
+import exceptions.NoUserException;
 
 public class UserActions {
 
 	UserDAO userdao = new UserDAO();
 
-	public UserDTO Login(String username, String password)
-			throws NoUserException {
+	public UserDTO Login(String username, String password) throws NoUserException {
 		
 		if (userdao.read(username) == null)
 			throw new NoUserException("This user does not exist.");
@@ -28,8 +25,6 @@ public class UserActions {
 		else
 			throw new NoUserException(
 					"This username does not match this password.");
-
-
 	}
 
 	static Logger log = Logger.getLogger(UserActions.class);

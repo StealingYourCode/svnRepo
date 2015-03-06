@@ -6,13 +6,34 @@ public class UserDTO implements IStorable {
 	private String password;
 	static int userID = 1000;
 	private String email;
-
+	private String firstname;
+	
 	public UserDTO(String username, String password, String email) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 
 	}
+	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	private String lastname;
+
+	
 
 	public String getUsername() {
 		return username;
