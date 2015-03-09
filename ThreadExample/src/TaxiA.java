@@ -20,7 +20,7 @@ public class TaxiA implements Runnable{
 				passenger.arrival();
 				System.out.println("TaxiA spotted passenger "+ passenger.getPassengerNum());
 				
-				System.out.println("TaxiA is picking up passneger "+passenger.getPassengerNum());
+				System.out.println("TaxiA is picking up passenger "+passenger.getPassengerNum());
 				
 				passenger.incrementPassengerNum();
 				passenger.notify();

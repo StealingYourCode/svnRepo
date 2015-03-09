@@ -18,7 +18,7 @@ public class TaxiB implements Runnable{
 			for(int i=0;i<5;i++){
 				passenger.arrival();
 				System.out.println("TaxiB spotted passenger "+ passenger.getPassengerNum());
-				System.out.println("TaxiB is picking up passneger "+passenger.getPassengerNum());
+				System.out.println("TaxiB is picking up passenger "+passenger.getPassengerNum());
 				
 				passenger.incrementPassengerNum();
 				passenger.notify();
