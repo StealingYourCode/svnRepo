@@ -12,7 +12,7 @@ public interface IStorage <T extends IStorable, P, I > {
 	
 	public void update(T oldstorable, T newstorable);
 	
-	public void delete(P id) throws NoUserException;
+	public void delete(I id) throws NoUserException;
 	
 
 }

@@ -7,7 +7,7 @@ import dto.IStorable;
 import dto.RequestDTO;
 import exceptions.NoUserException;
 
-public class RequestDAO implements IStorage<RequestDTO, Integer, String>{
+public class RequestDAO implements IStorage<RequestDTO, Integer, Integer>{
 
 	ArrayList<RequestDTO> requestList = new ArrayList<RequestDTO>();
 	@Override
