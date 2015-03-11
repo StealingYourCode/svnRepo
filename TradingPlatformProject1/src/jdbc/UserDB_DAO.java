@@ -48,7 +48,7 @@ public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, In
 			
 			return newuser;
 			
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -69,7 +69,7 @@ public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, In
 	@Override
 	public UserDTO read(String userName) throws NoUserException {
 		
-		if(username.equals(null))
+		if(userName.equals(null))
 			throw new NoUserException("This user does not exist");
 		
 		try 
@@ -87,17 +87,22 @@ public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, In
 
 			ResultSet rs = statement.executeQuery();
 			
-			rs.next();
+			if(rs.next()){
 			
 			user.setFirstname(rs.getString("FIRST_NAME"));
 			user.setLastname(rs.getString("LAST_NAME"));
 			user.setUserID(rs.getInt("PERSON_ID"));
 			user.setPassword(rs.getString("PASSWORD"));
 			user.setRoleID(rs.getInt("ROLE_ID"));
+			}
+			else{
+				throw new NoUserException("User not found");
+			}
 
 			return user;
 	       
-	      }catch (SQLException sqle) 
+	      }
+		catch (SQLException sqle) 
 		{
 			sqle.printStackTrace(); 
 			

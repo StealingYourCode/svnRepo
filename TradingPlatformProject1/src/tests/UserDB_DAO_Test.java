@@ -48,19 +48,18 @@ public class UserDB_DAO_Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
-//	@Test
-//	(expected=NoUserException.class)
-//	public void TestReadThrowsException() throws SQLException{
-//		try{
-//			user1=dao.read(null);
-//		} catch (NoUserException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	@Test
+	(expected=NoUserException.class)
+	public void TestReadThrowsException() throws SQLException{
+		try{
+			dao.read("feafe");
+		} catch (NoUserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 //	@Test
 //	public void TestCreateUser(){
@@ -74,9 +73,11 @@ public class UserDB_DAO_Test {
 //	}
 	
 //	@Test
-//	public void TestDeleteUser(){
+//	(expected=NoUserException.class)
+//	public void TestDeleteUser() {
 //		try {
 //			dao.delete(20);
+//			dao.read("newlyang");
 //		} catch (NoUserException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
