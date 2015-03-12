@@ -56,14 +56,14 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 
 
 	@Override
-	public void delete(String username) throws NoUserException {
+	public void delete(Integer id) throws NoUserException {
 		// TODO Auto-generated method stub
 		UserDAO userdao = new UserDAO();
 		
 		
 			
 		for(int i = 0; i<userList.size()-1; i++){
-			if(userList.get(i).getUsername().equals(username)){
+			if(userList.get(i).getUserID()==id){
 				
 				userList.remove(i);
 				PropertyConfigurator.configure("log4j.properties");
@@ -71,8 +71,8 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 			}
 		}
 		
-		if(userdao.read(username)==null)
-			throw new NoUserException("This user does not exist");
+//		if(userdao.read(id)==null)
+//			throw new NoUserException("This user does not exist");
 		
 		
 	}

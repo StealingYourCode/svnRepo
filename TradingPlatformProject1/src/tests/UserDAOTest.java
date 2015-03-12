@@ -28,6 +28,7 @@ public class UserDAOTest {
 		userdao.create(user1);
 		when(user1.getUsername()).thenReturn("Zvi");
 		when(user1.getPassword()).thenReturn("p1");
+		when(user1.getUserID()).thenReturn(1);
 		
 		when(user2.getUsername()).thenReturn("antonio");
 		when(user2.getPassword()).thenReturn("p2");
@@ -62,7 +63,7 @@ public class UserDAOTest {
 	(expected=NoUserException.class)
 	public void TestDeleteUser() throws NoUserException{
 		userdao.create(user1);
-		userdao.delete("Zvi");
+		userdao.delete(1);
 		assertNull(user1);
 	}
 	

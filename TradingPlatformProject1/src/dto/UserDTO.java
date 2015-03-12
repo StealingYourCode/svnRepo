@@ -1,12 +1,33 @@
 package dto;
 
-public class UserDTO implements IStorable {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
+@Entity
+@Table(name="PERSON")
+public class UserDTO implements IStorable {
+	
+	@Id
+	@Column(name="PERSON_ID")
+	private int userID;
+
+	@Column(name="USER_NAME")
 	private String username;
+	
+	@Column(name="PASSWORD")
 	private String password;
-	static int userID;
+	
+	@Column(name="FIRST_NAME")
 	private String firstname;
+	
+	@Column(name="LAST_NAME")
 	private String lastname;
+	
+//	@Column(name="")
+	@Transient
 	private int roleID;
 	
 	public int getRoleID() {
@@ -19,9 +40,13 @@ public class UserDTO implements IStorable {
 
 	public UserDTO(){}
 	
-	public UserDTO(String username, String password, String email) {
-		this.username = username;
+	public UserDTO(int id, String username, String password, String firstname, String lastname) {
+		userID=id;
 		this.password = password;
+		this.username= username;
+		this.password=password;
+		this.firstname=firstname;
+		this.lastname=lastname;
 
 	}
 	

@@ -3,16 +3,17 @@ package dao;
 import dto.IStorable;
 import dto.UserDTO;
 import exceptions.NoUserException;
+import exceptions.StorableNotFoundException;
 
 public interface IStorage <T extends IStorable, P, I > {
 	
-	public IStorable create(T storable);
+	public IStorable create(T storable) throws StorableNotFoundException;
 	
-	public IStorable read(P uniquevalue) throws NoUserException;
+	public IStorable read(P uniquevalue) throws StorableNotFoundException;
 	
-	public void update(T oldstorable, T newstorable);
+	public void update(T oldstorable, T newstorable) throws StorableNotFoundException;
 	
-	public void delete(I id) throws NoUserException;
+	public void delete(I id) throws StorableNotFoundException;
 	
 
 }
