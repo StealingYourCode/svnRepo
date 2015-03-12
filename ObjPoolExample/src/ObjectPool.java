@@ -20,36 +20,36 @@ public abstract class ObjectPool<T> {
 	
 	public synchronized T checkOut(){
 		long now = System.currentTimeMillis();
-		T t;
+		T pool;
 		if (unlocked.size()>0){
 			Enumeration<T> e =unlocked.keys();
 			while(e.hasMoreElements()){
-				t = e.nextElement();
-				if((now = unlocked.get(t)) > expirationTime){
+				pool = e.nextElement();
+				if((now = unlocked.get(pool)) > expirationTime){
 					//object has expired
-					unlocked.remove(t);
-					expire(t);
-					t = null;
+					unlocked.remove(pool);
+					expire(pool);
+					pool = null;
 				}
 				else{
-					if(validate(t)){
-						unlocked.remove(t);
-						locked.put(t, now);
-						return (t);
+					if(validate(pool)){
+						unlocked.remove(pool);
+						locked.put(pool, now);
+						return (pool);
 					}
 					else{
 						//object failed validation
-						unlocked.remove(t);
-						expire(t);
-						t = null;
+						unlocked.remove(pool);
+						expire(pool);
+						pool = null;
 					}
 				}
 			}
 		}	
 		//no objects available, create a new one
-		t= create();
-		locked.put(t, now);
-		return(t);
+		pool= create();
+		locked.put(pool, now);
+		return(pool);
 	}
 	
 	public synchronized void checkIn(T t){

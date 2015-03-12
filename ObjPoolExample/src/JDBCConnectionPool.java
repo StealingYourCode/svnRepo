@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 public class JDBCConnectionPool extends ObjectPool<Connection>{
 
-	private String dsn, user, password;
+	private String oracle, user, password;
 	
-	public JDBCConnectionPool( String dsn, String user, String password){
+	public JDBCConnectionPool( String oracle, String user, String password){
 		super();
 		try{
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
@@ -15,7 +15,7 @@ public class JDBCConnectionPool extends ObjectPool<Connection>{
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		this.dsn = dsn;
+		this.oracle = oracle;
 		this.user = user;
 		this.password =password;
 	}
@@ -23,7 +23,7 @@ public class JDBCConnectionPool extends ObjectPool<Connection>{
 	@Override 
 	protected Connection create(){
 		try{
-			return(DriverManager.getConnection(dsn,user,password));
+			return(DriverManager.getConnection(oracle,user,password));
 		}catch(SQLException e){
 			e.printStackTrace();
 			return null;
