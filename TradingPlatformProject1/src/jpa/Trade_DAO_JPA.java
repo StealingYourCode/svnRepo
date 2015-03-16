@@ -8,17 +8,17 @@ import javax.persistence.Persistence;
 import dao.IStorage;
 import dto.IStorable;
 import dto.RequestDTO;
-import dto.UserDTO;
-import exceptions.NoUserException;
+import dto.TradeDTO;
 import exceptions.StorableNotFoundException;
 
-public class Request_DAO_JPA implements IStorage<RequestDTO, Integer, Integer>{
-
+public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
+	
+	
 	@Override
-	public IStorable create(RequestDTO request) throws StorableNotFoundException {
+	public IStorable create(TradeDTO request) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
 				if(request==null)
-					throw new StorableNotFoundException("This request does not exist");
+					throw new StorableNotFoundException("This trade does not exist");
 
 				
 				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
@@ -43,7 +43,7 @@ public class Request_DAO_JPA implements IStorage<RequestDTO, Integer, Integer>{
 		EntityManager em = emf.createEntityManager();
 		
 		try{
-		RequestDTO result = em.find(RequestDTO.class, id);
+			TradeDTO result = em.find(TradeDTO.class, id);
 		
 		em.close();
 		emf.close();
@@ -57,32 +57,32 @@ public class Request_DAO_JPA implements IStorage<RequestDTO, Integer, Integer>{
 	}
 
 	@Override
-	public void update(RequestDTO oldrequest, RequestDTO newrequest)
+	public void update(TradeDTO oldtrade, TradeDTO newtrade)
 			throws StorableNotFoundException {
-		if(oldrequest == null || newrequest == null)
+		if(oldtrade == null || newtrade == null)
 			throw new StorableNotFoundException("This request does not exist");
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
 
 		EntityManager em = emf.createEntityManager();
 		
-		RequestDTO result = em.find(RequestDTO.class, oldrequest.getRequest_id());
+		TradeDTO result = em.find(TradeDTO.class, oldtrade.getTrade_id());
 		
 		em.getTransaction().begin();
 		
 		em.getTransaction().commit();
 		
-		result.setBuy_or_sell(newrequest.getBuy_or_sell());
-		result.setLimit_price(newrequest.getLimit_price());
-		result.setMinimum_shares(newrequest.getMinimum_shares());
-		result.setParent_request_id(newrequest.getParent_request_id());
-		result.setRequest_date(newrequest.getRequest_date());
-		result.setShareholder_id(newrequest.getShareholder_id());
-		result.setShares(newrequest.getShares());
-		result.setShares_filled(newrequest.getShares_filled());
-		result.setStock_id(newrequest.getStock_id());
-		result.setStop_price(newrequest.getStop_price());
-		result.setTime_in_force(newrequest.getTime_in_force());
+		result.setBuy_request_id(newtrade.getBuy_request_id());
+		result.setBuyer_id(newtrade.getBuyer_id());
+		result.setPrice_total(newtrade.getPrice_total());
+		result.setSell_request_id(newtrade.getSell_request_id());
+		result.setSeller_id(newtrade.getSeller_id());
+		result.setShare_price(newtrade.getShare_price());
+		result.setShares(newtrade.getShares());
+		result.setStock_id(newtrade.getStock_id());
+		result.setTrade_id(newtrade.getTrade_id());
+		result.setTransaction_time(newtrade.getTransaction_time());
+		
 		
 		em.close();
 		emf.close();
@@ -92,7 +92,7 @@ public class Request_DAO_JPA implements IStorage<RequestDTO, Integer, Integer>{
 	@Override
 	public void delete(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-		Request_DAO_JPA dao = new Request_DAO_JPA();
+		Trade_DAO_JPA dao = new Trade_DAO_JPA();
 		
 		
 		
@@ -100,11 +100,11 @@ public class Request_DAO_JPA implements IStorage<RequestDTO, Integer, Integer>{
 
 		EntityManager em = emf.createEntityManager();
 		
-		if(em.find(RequestDTO.class, id)==null)
-			throw new StorableNotFoundException("This request does not exist");
+		if(em.find(TradeDTO.class, id)==null)
+			throw new StorableNotFoundException("This trade does not exist");
 		
 		em.getTransaction().begin();
-		em.remove(em.find(RequestDTO.class, id));
+		em.remove(em.find(TradeDTO.class, id));
 		em.getTransaction().commit();
 		
 		em.close();
