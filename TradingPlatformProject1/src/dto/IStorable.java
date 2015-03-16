@@ -1,5 +1,7 @@
 package dto;
 
-public interface IStorable {
+import java.io.Serializable;
+
+public interface IStorable extends Serializable{
 
 }

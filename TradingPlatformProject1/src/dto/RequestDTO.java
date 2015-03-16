@@ -4,6 +4,8 @@ import java.sql.Date;
 
 public class RequestDTO implements IStorable {
 	
+		
+	
 	public enum BuyOrSell{
 		BUY, SELL;
 	}
