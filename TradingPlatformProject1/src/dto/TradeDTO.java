@@ -1,18 +1,37 @@
 package dto;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TRADE")
 public class TradeDTO implements IStorable{
 
+	@Id
+	@Column(name="TRADE_ID")
 	int trade_id;
+	@Column(name="STOCK_ID")
 	int stock_id;
+	@Column(name="TRANSACTION_TIME")
 	Date transaction_time;
-	double shares;
-	double share_price;
-	double price_total;
+	@Column(name="SHARES")
+	BigDecimal shares;
+	@Column(name="SHARE_PRICE")
+	BigDecimal share_price;
+	@Column(name="PRICE_TOTAL")
+	BigDecimal price_total;
+	@Column(name="BUYER_ID")
 	int buyer_id;
+	@Column(name="SELLER_ID")
 	int seller_id;
+	@Column(name="BUY_REQUEST_ID")
 	int buy_request_id;
+	@Column(name="SELL_REQUEST_ID")
 	int sell_request_id;
 	
 	public int getTrade_id() {
@@ -33,22 +52,22 @@ public class TradeDTO implements IStorable{
 	public void setTransaction_time(Date transaction_time) {
 		this.transaction_time = transaction_time;
 	}
-	public double getShares() {
+	public BigDecimal getShares() {
 		return shares;
 	}
-	public void setShares(double shares) {
+	public void setShares(BigDecimal shares) {
 		this.shares = shares;
 	}
-	public double getShare_price() {
+	public BigDecimal getShare_price() {
 		return share_price;
 	}
-	public void setShare_price(double share_price) {
+	public void setShare_price(BigDecimal share_price) {
 		this.share_price = share_price;
 	}
-	public double getPrice_total() {
+	public BigDecimal getPrice_total() {
 		return price_total;
 	}
-	public void setPrice_total(double price_total) {
+	public void setPrice_total(BigDecimal price_total) {
 		this.price_total = price_total;
 	}
 	public int getBuyer_id() {

@@ -4,14 +4,14 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import dao.UserDAO;
-import dto.UserDTO;
+import dto.Person;
 import exceptions.NoUserException;
 
 public class UserActions {
 
 	UserDAO userdao = new UserDAO();
 
-	public UserDTO Login(String username, String password) throws NoUserException {
+	public Person Login(String username, String password) throws NoUserException {
 		
 		if (userdao.read(username) == null)
 			throw new NoUserException("This user does not exist.");

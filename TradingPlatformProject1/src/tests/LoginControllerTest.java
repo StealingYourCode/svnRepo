@@ -11,7 +11,7 @@ import org.mockito.MockitoAnnotations;
 import userManager.UserActions;
 import controllers.LoginController;
 import dao.UserDAO;
-import dto.UserDTO;
+import dto.Person;
 import exceptions.NoUserException;
 
 public class LoginControllerTest {
@@ -19,7 +19,7 @@ public class LoginControllerTest {
 	private LoginController lc;
 //	private UserDAO dao;
 	private UserActions ua = new UserActions();;
-	@Mock UserDTO user1, user2, user3;
+	@Mock Person user1, user2, user3;
 	@Mock UserDAO dao;
 
 	@Before
@@ -48,7 +48,7 @@ public class LoginControllerTest {
 	@Test
 	public void TestLoginController_Login() throws NoUserException{
 		
-		UserDTO returnuser1 = ua.Login("Bobsaget", "Password");
+		Person returnuser1 = ua.Login("Bobsaget", "Password");
 		assertEquals(user1, returnuser1);
 		
 	}
@@ -56,7 +56,7 @@ public class LoginControllerTest {
 	@Test
 	public void TestUsernameMatchReturnsTrue() throws NoUserException {
 
-		UserDTO returnUser=null;
+		Person returnUser=null;
 		returnUser = dao.read("Bobsaget");
 		assertTrue(returnUser.equals(user1));
 	}
@@ -65,7 +65,7 @@ public class LoginControllerTest {
 	@Test
 	(expected = NoUserException.class)
 	public void TestNoUserException() throws NoUserException{
-		UserDTO returnuser = dao.read(null);
+		Person returnuser = dao.read(null);
 		assertTrue(returnuser.equals(null));
 	}
 	

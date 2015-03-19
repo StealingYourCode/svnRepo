@@ -13,13 +13,13 @@ import java.sql.SQLException;
 
 import dao.IStorage;
 import dto.IStorable;
-import dto.UserDTO;
+import dto.Person;
 import exceptions.NoUserException;
 
-public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, Integer>{
+public class UserDB_DAO extends SuperDAO implements IStorage<Person, String, Integer>{
 	
 	@Override
-	public UserDTO create(UserDTO newuser) {
+	public Person create(Person newuser) {
 		
 		try {
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
@@ -67,7 +67,7 @@ public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, In
 	}
 
 	@Override
-	public UserDTO read(String userName) throws NoUserException {
+	public Person read(String userName) throws NoUserException {
 		
 		if(userName.equals(null))
 			throw new NoUserException("This user does not exist");
@@ -77,7 +77,7 @@ public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, In
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 			conn = DriverManager.getConnection(url,username,password);
 			
-			UserDTO user = new UserDTO();
+			Person user = new Person();
 					
 			String query = getQuery("readUser");
 //			System.out.println("query: "+query);
@@ -121,7 +121,7 @@ public class UserDB_DAO extends SuperDAO implements IStorage<UserDTO, String, In
 	}
 
 	@Override
-	public void update(UserDTO olduser, UserDTO newuser) {
+	public void update(Person olduser, Person newuser) {
 		// TODO Auto-generated method stub
 		
 		try {

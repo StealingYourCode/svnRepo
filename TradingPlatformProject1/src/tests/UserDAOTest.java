@@ -9,13 +9,13 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import dao.UserDAO;
-import dto.UserDTO;
+import dto.Person;
 import exceptions.NoUserException;
 
 
 public class UserDAOTest {
 	
-	@Mock UserDTO user1, user2, user3;
+	@Mock Person user1, user2, user3;
 	UserDAO userdao = new UserDAO();
 
 	
@@ -39,7 +39,7 @@ public class UserDAOTest {
 	@Test
 	public void TestReadUser() throws NoUserException{
 //		userdao.create(user1);
-		UserDTO newuser = userdao.read("Zvi");
+		Person newuser = userdao.read("Zvi");
 //		assertTrue(newuser.equals(user1));
 		assertEquals(newuser, user1);
 	}

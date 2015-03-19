@@ -1,7 +1,7 @@
 package dao;
 
 import dto.IStorable;
-import dto.UserDTO;
+import entities.Person;
 import exceptions.NoUserException;
 import exceptions.StorableNotFoundException;
 

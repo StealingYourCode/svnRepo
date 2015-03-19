@@ -9,15 +9,16 @@ import dao.IStorage;
 import dto.IStorable;
 import dto.RequestDTO;
 import dto.TradeDTO;
+import entities.Trade;
 import exceptions.StorableNotFoundException;
 
-public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
+public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 	
 	
 	@Override
-	public IStorable create(TradeDTO request) throws StorableNotFoundException {
+	public Trade create(Trade trade) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-				if(request==null)
+				if(trade==null)
 					throw new StorableNotFoundException("This trade does not exist");
 
 				
@@ -26,24 +27,24 @@ public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
 				EntityManager em = emf.createEntityManager();
 				
 				em.getTransaction().begin();
-				em.persist(request);
+				em.persist(trade);
 				em.getTransaction().commit();
 				
 				
 				em.close();
 				emf.close();
-				return request;
+				return trade;
 	}
 
 	@Override
-	public IStorable read(Integer id) throws StorableNotFoundException {
+	public Trade read(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
 
 		EntityManager em = emf.createEntityManager();
 		
 		try{
-			TradeDTO result = em.find(TradeDTO.class, id);
+			Trade result = em.find(Trade.class, id);
 		
 		em.close();
 		emf.close();
@@ -57,7 +58,7 @@ public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
 	}
 
 	@Override
-	public void update(TradeDTO oldtrade, TradeDTO newtrade)
+	public void update(Trade oldtrade, Trade newtrade)
 			throws StorableNotFoundException {
 		if(oldtrade == null || newtrade == null)
 			throw new StorableNotFoundException("This request does not exist");
@@ -66,7 +67,7 @@ public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
 
 		EntityManager em = emf.createEntityManager();
 		
-		TradeDTO result = em.find(TradeDTO.class, oldtrade.getTrade_id());
+		Trade result = em.find(Trade.class, oldtrade.getTradeId());
 		
 		em.getTransaction().begin();
 		
@@ -80,7 +81,7 @@ public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
 		result.setShare_price(newtrade.getShare_price());
 		result.setShares(newtrade.getShares());
 		result.setStock_id(newtrade.getStock_id());
-		result.setTrade_id(newtrade.getTrade_id());
+		result.setTrade_id(newtrade.getTradeId());
 		result.setTransaction_time(newtrade.getTransaction_time());
 		
 		
@@ -100,11 +101,11 @@ public class Trade_DAO_JPA implements IStorage<TradeDTO, Integer, Integer> {
 
 		EntityManager em = emf.createEntityManager();
 		
-		if(em.find(TradeDTO.class, id)==null)
+		if(em.find(Trade.class, id)==null)
 			throw new StorableNotFoundException("This trade does not exist");
 		
 		em.getTransaction().begin();
-		em.remove(em.find(TradeDTO.class, id));
+		em.remove(em.find(Trade.class, id));
 		em.getTransaction().commit();
 		
 		em.close();

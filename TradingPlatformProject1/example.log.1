@@ -1,12 +1,16 @@
-2015-24-12 14:24:30 DEBUG EntityManagerFactoryRegistry:66 - Registering EntityManagerFactory: TradingPlatformProject1 
-2015-24-12 14:24:31 TRACE SessionImpl:315 - Opened session at timestamp: 14261846709
-2015-24-12 14:24:31 TRACE SessionImpl:1397 - Setting flush mode to: AUTO
-2015-24-12 14:24:31 TRACE SessionImpl:1414 - Setting cache mode to: NORMAL
-2015-24-12 14:24:31 DEBUG AbstractTransactionImpl:158 - begin
-2015-24-12 14:24:31 DEBUG LogicalConnectionImpl:212 - Obtaining JDBC connection
-2015-24-12 14:24:31 TRACE DriverManagerConnectionProviderImpl:175 - Total checked-out connections: 0
-2015-24-12 14:24:31 TRACE DriverManagerConnectionProviderImpl:181 - Using pooled JDBC connection, pool size: 0
-2015-24-12 14:24:31 DEBUG LogicalConnectionImpl:218 - Obtained JDBC connection
-2015-24-12 14:24:31 DEBUG JdbcTransaction:69 - initial autocommit status: true
-2015-24-12 14:24:31 DEBUG JdbcTransaction:71 - disabling autocommit
-2015-24-12 14:24:31 DEBUG AbstractEntityManagerImpl:1154 - Mark transaction for rollback
+2015-55-19 10:55:48 TRACE AbstractServiceRegistryImpl:146 - Initializing service [role=org.hibernate.engine.jdbc.batch.spi.BatchBuilder]
+2015-55-19 10:55:48 TRACE AbstractServiceRegistryImpl:146 - Initializing service [role=org.hibernate.service.jmx.spi.JmxService]
+2015-55-19 10:55:48 TRACE BatchBuilderImpl:68 - Building batch [size=1]
+2015-55-19 10:55:48 DEBUG SQL:104 - 
+    /* insert entities.Person
+        */ insert 
+        into
+            Person
+            (FIRST_NAME, LAST_NAME, password, USER_NAME, PERSON_ID) 
+        values
+            (?, ?, ?, ?, ?)
+2015-55-19 10:55:48 TRACE JdbcCoordinatorImpl:319 - Registering statement [oracle.jdbc.driver.T4CPreparedStatement@87cd5c]
+2015-55-19 10:55:48 TRACE AbstractEntityPersister:2780 - Dehydrating entity: [entities.Person#21]
+2015-55-19 10:55:48 TRACE BasicBinder:84 - binding parameter [1] as [VARCHAR] - louis
+2015-55-19 10:55:48 TRACE BasicBinder:84 - binding parameter [2] as [VARCHAR] - yang
+2015-55-19 10:55:48 TRACE BasicBinder:84 - binding parameter [3] as [VARCHAR] - password

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import dto.UserDTO;
+import dto.Person;
 import exceptions.NoUserException;
 
-public class UserDAO implements IStorage<UserDTO, String, Integer> {
+public class UserDAO implements IStorage<Person, String, Integer> {
 
 	/**
 	 * DAO data access object.
@@ -20,10 +20,10 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 //	int rand_num = rand.nextInt(9999) + 1;
 
 	  
-	static ArrayList<UserDTO> userList = new ArrayList<UserDTO>();
+	static ArrayList<Person> userList = new ArrayList<Person>();
 	
 	@Override
-	public UserDTO create(UserDTO user) {
+	public Person create(Person user) {
 		PropertyConfigurator.configure("log4j.properties");
 		log.info(user + " has been created");
 		userList.add(user);
@@ -31,11 +31,11 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 	}
 
 	@Override
-	public UserDTO read(String username) throws NoUserException{
+	public Person read(String username) throws NoUserException{
 		
 	
 		
-		for (UserDTO user : userList) {
+		for (Person user : userList) {
 			if (user.getUsername().equals(username))
 				return user;
 		}
@@ -44,7 +44,7 @@ public class UserDAO implements IStorage<UserDTO, String, Integer> {
 	}
 
 	@Override
-	public void update(UserDTO user, UserDTO newuser) {
+	public void update(Person user, Person newuser) {
 		for (int i = 0; i < userList.size(); i++) {
 			if(userList.get(i).equals(user)){
 				PropertyConfigurator.configure("log4j.properties");

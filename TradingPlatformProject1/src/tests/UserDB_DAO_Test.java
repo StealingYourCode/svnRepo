@@ -12,13 +12,13 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import dto.UserDTO;
+import dto.Person;
 import exceptions.NoUserException;
 
 public class UserDB_DAO_Test {
 	
 	private UserDB_DAO dao = new UserDB_DAO();
-	@Mock UserDTO user1,user2, user3;
+	@Mock Person user1,user2, user3;
 	
 	@Before
 	public void setUp(){

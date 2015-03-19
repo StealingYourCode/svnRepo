@@ -5,7 +5,7 @@ import commands.LoginCommand;
 import interfaces.ICommand;
 import exceptions.NoUserException;
 import dao.UserDAO;
-import dto.UserDTO;
+import dto.Person;
 
 public class LoginController {
 	

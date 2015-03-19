@@ -7,14 +7,14 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import userManager.UserActions;
-import dto.UserDTO;
+import dto.Person;
 import exceptions.InvalidInputException;
 import exceptions.NoUserException;
 
 public class LoginCommand implements ICommand{
 	
-	UserDTO temp;
-	UserDTO potentialUser;
+	Person temp;
+	Person potentialUser;
 	UserActions useractions = new UserActions();
 	private String username, password;
 	

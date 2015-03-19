@@ -1,9 +1,9 @@
 package com.fdmgroup.factory;
 
+import jpa.Request_DAO_JPA;
+import jpa.Trade_DAO_JPA;
+import jpa.User_DAO_JPA;
 import dao.IStorage;
-import dao.RequestDAO;
-import dao.TradeDAO;
-import dao.UserDAO;
 
 public class DAOFactory {
 	
@@ -11,16 +11,17 @@ public class DAOFactory {
 		USERDAO, REQUESTDAO, TRADEDAO;	
 		}
 	
-	public static IStorage daoFactory(daoType input){
-		IStorage dao = null;
+	public static IStorage<?,?,?> daoFactory(daoType input){
+		IStorage<?,?,?> dao = null;
+		
 		if(input == daoType.USERDAO){
-			dao = new UserDAO();
+			dao = new User_DAO_JPA();
 		}
 		if(input == daoType.REQUESTDAO){
-			dao = new RequestDAO();
+			dao = new Request_DAO_JPA();
 		}
 		if(input == daoType.TRADEDAO){
-			dao = new TradeDAO();
+			dao = new Trade_DAO_JPA();
 		}
 		
 		return dao;
