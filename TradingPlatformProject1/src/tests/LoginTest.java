@@ -1,6 +1,8 @@
 package tests;
 
 import static org.junit.Assert.*;
+import java.sql.Date;
+
 import jpa.User_DAO_JPA;
 
 import org.junit.Before;
@@ -50,4 +52,9 @@ public class LoginTest {
 		actions.Login("wrongusername", "password");
 	}
 	
+	@Test
+	(expected=StorableNotFoundException.class)
+	public void testLoginWrongpasswordThrowsException() throws StorableNotFoundException{
+		actions.Login("FHLH", "wrongpassword");
+	}
 }

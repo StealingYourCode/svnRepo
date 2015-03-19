@@ -33,6 +33,8 @@ public class Request implements Serializable, IStorable {
 	}
 	
 	@Id
+//	@GeneratedValue(generator="REQUEST_ID_SEQ")
+//	@SequenceGenerator(name="my_seq",sequenceName="MY_SEQ", allocationSize=1)
 	@Column(name="REQUEST_ID")
 	private Integer requestId;
 

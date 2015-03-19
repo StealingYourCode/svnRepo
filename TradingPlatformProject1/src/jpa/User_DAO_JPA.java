@@ -57,11 +57,6 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 	}
 
 	
-
-	
-
-	
-	
 	/************************************************************************************/
 	
 

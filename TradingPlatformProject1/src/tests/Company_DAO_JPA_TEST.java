@@ -69,15 +69,15 @@ public class Company_DAO_JPA_TEST {
 //		}		
 //	}
 	
-	@Test
-	public void testDelete(){
-		try {
-			dao.delete(10);
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Test
+//	public void testDelete(){
+//		try {
+//			dao.delete(10);
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 //	
 //	@Test
 //	(expected=StorableNotFoundException.class)

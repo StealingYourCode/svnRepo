@@ -44,7 +44,7 @@ public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 		EntityManager em = emf.createEntityManager();
 		
 		try{
-			Trade result = em.find(Trade.class, id);
+		Trade result = em.find(Trade.class, id);
 		
 		em.close();
 		emf.close();

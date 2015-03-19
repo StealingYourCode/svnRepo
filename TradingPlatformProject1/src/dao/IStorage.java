@@ -15,5 +15,7 @@ public interface IStorage <T extends IStorable, P, I > {
 	
 	public void delete(I id) throws StorableNotFoundException;
 	
+	
+	
 
 }

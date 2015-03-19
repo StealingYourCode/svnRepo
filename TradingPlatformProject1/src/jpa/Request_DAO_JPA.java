@@ -51,7 +51,6 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 		}catch (NoResultException e){
 			e.printStackTrace();
 			throw new StorableNotFoundException("This request does not exist");
-			
 		}
 	}
 
