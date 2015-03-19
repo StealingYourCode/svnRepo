@@ -68,22 +68,22 @@ public class Request_DAO_JPA_Test {
 		
 	}
 	
-	@Test
-	public void testCreate(){
-		try {
-			dao.create(request);
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Test
+//	public void testCreate(){
+//		try {
+//			dao.create(request2);
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	@Test
 	public void testRead(){
 		Request result;
 		try {
 			result = (Request) dao.read(1);
-			assertTrue(result.getMinimumShares().equals(20));
+			assertTrue(result.getMinimumShares().equals(new BigDecimal(20)));
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,21 +93,21 @@ public class Request_DAO_JPA_Test {
 //	@Test
 //	public void testUpdate(){
 //		try {
-//			dao.update(request, request2);
+//			dao.update(request2, request);
 //		} catch (StorableNotFoundException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //	}
 	
-//	@Test
-//	public void testDelete(){
-//		long num =2;
-//		try {
-//			dao.delete( num);
-//		} catch (StorableNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	@Test
+	public void testDelete(){
+		
+		try {
+			dao.delete(1);
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

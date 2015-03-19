@@ -21,7 +21,7 @@ public class Trade implements Serializable, IStorable {
 
 	@Id
 	@Column(name="TRADE_ID")
-	private long tradeId;
+	private Integer tradeId;
 
 	@Column(name="PRICE_TOTAL")
 	private BigDecimal priceTotal;
@@ -61,11 +61,11 @@ public class Trade implements Serializable, IStorable {
 	public Trade() {
 	}
 
-	public long getTradeId() {
+	public Integer getTradeId() {
 		return this.tradeId;
 	}
 
-	public void setTradeId(long tradeId) {
+	public void setTradeId(Integer tradeId) {
 		this.tradeId = tradeId;
 	}
 

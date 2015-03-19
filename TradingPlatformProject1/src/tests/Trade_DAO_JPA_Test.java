@@ -26,7 +26,7 @@ public class Trade_DAO_JPA_Test {
 	@Before
 	public void setUp(){
 		person.setPersonId(11);
-		request.setRequestId(2);
+		request.setRequestId(1);
 		
 		trade.setPriceTotal(new BigDecimal(100));
 		trade.setSharePrice(new BigDecimal(50));
@@ -51,24 +51,40 @@ public class Trade_DAO_JPA_Test {
 //		trade2.setTransaction_time(new Date(10-12-13));
 	}
 	
-	@Test
-	public void testCreate(){
-		try {
-			dao.create(trade);
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 //	@Test
-//	public void testRead(){
+//	public void testCreate(){
 //		try {
-//			assertTrue(dao.read(1).getStockId().equals(3));
+//			dao.create(trade);
 //		} catch (StorableNotFoundException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+//	}
+	
+//	@Test
+//	public void testRead(){
+//		try {
+//			assertTrue(dao.read(2).getStockId().equals(3));
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+//	@Test 
+//	public void testDelete(){
+//		try {
+//			dao.delete(2);
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+//	@Test 
+//	(expected=StorableNotFoundException.class)
+//	public void testDeleteThrowsException() throws StorableNotFoundException{
+//		dao.delete(45);
 //	}
 
 }

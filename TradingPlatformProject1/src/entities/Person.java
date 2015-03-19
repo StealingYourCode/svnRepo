@@ -28,7 +28,7 @@ public class Person implements Serializable, IStorable {
 
 	@Id
 	@Column(name="PERSON_ID")
-	private long personId;
+	private Integer personId;
 
 	@Column(name="FIRST_NAME")
 	private String firstName;
@@ -71,11 +71,11 @@ public class Person implements Serializable, IStorable {
 	public Person() {
 	}
 
-	public long getPersonId() {
+	public Integer getPersonId() {
 		return this.personId;
 	}
 
-	public void setPersonId(long personId) {
+	public void setPersonId(Integer personId) {
 		this.personId = personId;
 	}
 

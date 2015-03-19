@@ -1,16 +1,10 @@
-2015-55-19 10:55:48 TRACE AbstractServiceRegistryImpl:146 - Initializing service [role=org.hibernate.engine.jdbc.batch.spi.BatchBuilder]
-2015-55-19 10:55:48 TRACE AbstractServiceRegistryImpl:146 - Initializing service [role=org.hibernate.service.jmx.spi.JmxService]
-2015-55-19 10:55:48 TRACE BatchBuilderImpl:68 - Building batch [size=1]
-2015-55-19 10:55:48 DEBUG SQL:104 - 
-    /* insert entities.Person
-        */ insert 
-        into
-            Person
-            (FIRST_NAME, LAST_NAME, password, USER_NAME, PERSON_ID) 
-        values
-            (?, ?, ?, ?, ?)
-2015-55-19 10:55:48 TRACE JdbcCoordinatorImpl:319 - Registering statement [oracle.jdbc.driver.T4CPreparedStatement@87cd5c]
-2015-55-19 10:55:48 TRACE AbstractEntityPersister:2780 - Dehydrating entity: [entities.Person#21]
-2015-55-19 10:55:48 TRACE BasicBinder:84 - binding parameter [1] as [VARCHAR] - louis
-2015-55-19 10:55:48 TRACE BasicBinder:84 - binding parameter [2] as [VARCHAR] - yang
-2015-55-19 10:55:48 TRACE BasicBinder:84 - binding parameter [3] as [VARCHAR] - password
+2015-34-19 15:34:20 TRACE Loader:1105 - Total objects hydrated: 1
+2015-34-19 15:34:20 DEBUG TwoPhaseLoad:158 - Resolving associations for [entities.Person#22]
+2015-34-19 15:34:20 TRACE CollectionType:742 - Created collection wrapper: [entities.Person.requests#22]
+2015-34-19 15:34:20 TRACE CollectionType:742 - Created collection wrapper: [entities.Person.roles#22]
+2015-34-19 15:34:20 TRACE CollectionType:742 - Created collection wrapper: [entities.Person.trades1#22]
+2015-34-19 15:34:20 TRACE CollectionType:742 - Created collection wrapper: [entities.Person.trades2#22]
+2015-34-19 15:34:20 DEBUG TwoPhaseLoad:277 - Done materializing entity [entities.Person#22]
+2015-34-19 15:34:20 TRACE JdbcCoordinatorImpl:358 - Releasing statement [oracle.jdbc.driver.T4CPreparedStatement@623367]
+2015-34-19 15:34:20 TRACE JdbcCoordinatorImpl:515 - Closing result set [oracle.jdbc.driver.OracleResultSetImpl@11ce2ad]
+2015-34-19 15:34:20 TRACE JdbcCoordinatorImpl:472 - Closing prepared statement [oracle.jdbc.driver.T4CPreparedStatement@623367]

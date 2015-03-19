@@ -20,7 +20,7 @@ public class Company implements Serializable, IStorable {
 
 	@Id
 	@Column(name="COMPANY_ID")
-	private long companyId;
+	private Integer companyId;
 
 	private String name;
 
@@ -33,11 +33,11 @@ public class Company implements Serializable, IStorable {
 	public Company() {
 	}
 
-	public long getCompanyId() {
+	public Integer getCompanyId() {
 		return this.companyId;
 	}
 
-	public void setCompanyId(long companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 

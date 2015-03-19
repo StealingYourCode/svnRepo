@@ -73,16 +73,15 @@ public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 		
 		em.getTransaction().commit();
 		
-		result.setBuy_request_id(newtrade.getBuy_request_id());
-		result.setBuyer_id(newtrade.getBuyer_id());
-		result.setPrice_total(newtrade.getPrice_total());
-		result.setSell_request_id(newtrade.getSell_request_id());
-		result.setSeller_id(newtrade.getSeller_id());
-		result.setShare_price(newtrade.getShare_price());
+		result.setPerson1(newtrade.getPerson1());
+		result.setPerson2(newtrade.getPerson2());
+		result.setPriceTotal(newtrade.getPriceTotal());
+		result.setRequest1(newtrade.getRequest1());
+		result.setRequest2(newtrade.getRequest2());
+		result.setSharePrice(newtrade.getSharePrice());
 		result.setShares(newtrade.getShares());
-		result.setStock_id(newtrade.getStock_id());
-		result.setTrade_id(newtrade.getTradeId());
-		result.setTransaction_time(newtrade.getTransaction_time());
+		result.setStockId(newtrade.getStockId());
+		result.setTransactionTime(newtrade.getTransactionTime());
 		
 		
 		em.close();

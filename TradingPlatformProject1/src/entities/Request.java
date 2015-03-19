@@ -34,7 +34,7 @@ public class Request implements Serializable, IStorable {
 	
 	@Id
 	@Column(name="REQUEST_ID")
-	private long requestId;
+	private Integer requestId;
 
 	@Column(name="BUY_SELL")
 	private String buySell;
@@ -90,11 +90,11 @@ public class Request implements Serializable, IStorable {
 	public Request() {
 	}
 
-	public long getRequestId() {
+	public Integer getRequestId() {
 		return this.requestId;
 	}
 
-	public void setRequestId(long requestId) {
+	public void setRequestId(Integer requestId) {
 		this.requestId = requestId;
 	}
 

@@ -48,10 +48,10 @@ public class UserJPA_DAO_test {
 		
 	}
 	
-	@Test
-	public void testCreate() throws StorableNotFoundException{
-		dao.create(user1);
-	}
+//	@Test
+//	public void testCreate() throws StorableNotFoundException{
+//		dao.create(user1);
+//	}
 	
 //	@Test
 //	public void testReadIntParam(){
@@ -76,28 +76,28 @@ public class UserJPA_DAO_test {
 //		}
 //		
 //	}
-//	@Test
-//	(expected=StorableNotFoundException.class)
-//	public void testCreateThrowsCorrectException() throws StorableNotFoundException{
-//		dao.create(blankuser);
-//	}
-//	
-//	@Test
-//	(expected=StorableNotFoundException.class)
-//	public void testReadThrowsException() throws StorableNotFoundException{
-//		Person result = dao.read("JN");
-//		assertTrue(result.getFirstName().equals("Janet"));
-//	}
-//	
-//	@Test
-//	public void testDelete() throws StorableNotFoundException{
-//		try {
-//			dao.delete(21);
-//		} catch (StorableNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	@Test
+	(expected=StorableNotFoundException.class)
+	public void testCreateThrowsCorrectException() throws StorableNotFoundException{
+		dao.create(blankuser);
+	}
+	
+	@Test
+	(expected=StorableNotFoundException.class)
+	public void testReadThrowsException() throws StorableNotFoundException{
+		Person result = dao.read("JN");
+		assertTrue(result.getFirstName().equals("Janet"));
+	}
+	
+	@Test
+	public void testDelete() throws StorableNotFoundException{
+		try {
+			dao.delete(21);
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 //	@Test
 //	(expected=StorableNotFoundException.class)
