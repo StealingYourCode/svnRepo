@@ -51,21 +51,22 @@ public class Trade_DAO_JPA_Test {
 		trade2.setRequest2(request);
 	}
 	
-	@Test
-	public void testCreate(){
-		try {
-			dao.create(trade);
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+//	@Test
+//	public void testCreate(){
+//		try {
+//			dao.create(trade);
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
 //	@Test
 //	(expected=StorableNotFoundException.class)
 //	public void testCreateThrowsException() throws StorableNotFoundException{
 //		dao.create(null);
 //	}
+	/*******************************************************************************************************/
 	
 //	@Test
 //	public void testRead(){
@@ -76,13 +77,13 @@ public class Trade_DAO_JPA_Test {
 //			e.printStackTrace();
 //		}
 //	}
-	
+//	
 //	@Test
 //	(expected=StorableNotFoundException.class)
 //	public void testReadThrowsException() throws StorableNotFoundException{
 //		dao.read(565);
 //	}
-	
+//	
 //	@Test
 //	public void testUpdate(){
 //		try {
@@ -92,6 +93,7 @@ public class Trade_DAO_JPA_Test {
 //			e.printStackTrace();
 //		}
 //	}
+	/****************************************************************************************/
 //	@Test 
 //	public void testDelete(){
 //		try {

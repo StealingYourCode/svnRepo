@@ -36,25 +36,25 @@ public class LoginTest {
 //	}
 //}
 	
+	@Test
+	public void testLogin(){
+		try {
+			assertTrue(actions.Login("FHLH", "woooooo").getFirstName().equals("Foghorn"));
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 //	@Test
-//	public void testLogin(){
-//		try {
-//			assertTrue(actions.Login("FHLH", "woooooo").getFirstName().equals("Foghorn"));
-//		} catch (StorableNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+//	(expected=StorableNotFoundException.class)
+//	public void testLoginThrowsException() throws StorableNotFoundException{
+//		actions.Login("wrongusername", "password");
 //	}
-	
-	@Test
-	(expected=StorableNotFoundException.class)
-	public void testLoginThrowsException() throws StorableNotFoundException{
-		actions.Login("wrongusername", "password");
-	}
-	
-	@Test
-	(expected=StorableNotFoundException.class)
-	public void testLoginWrongpasswordThrowsException() throws StorableNotFoundException{
-		actions.Login("FHLH", "wrongpassword");
-	}
+//	
+//	@Test
+//	(expected=StorableNotFoundException.class)
+//	public void testLoginWrongpasswordThrowsException() throws StorableNotFoundException{
+//		actions.Login("FHLH", "wrongpassword");
+//	}
 }

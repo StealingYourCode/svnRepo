@@ -79,13 +79,13 @@ public class Request_DAO_JPA_Test {
 //			e.printStackTrace();
 //		}
 //	}
-	
-	@Test
-	(expected=StorableNotFoundException.class)
-	public void testCreateThrowsException() throws StorableNotFoundException{
-		dao.create(null);
-	}
-	
+//	
+//	@Test
+//	(expected=StorableNotFoundException.class)
+//	public void testCreateThrowsException() throws StorableNotFoundException{
+//		dao.create(null);
+//	}
+//	
 //	@Test
 //	public void testRead(){
 //		Request result;
@@ -97,11 +97,12 @@ public class Request_DAO_JPA_Test {
 //			e.printStackTrace();
 //		}
 //	}
-	
-	@Test
-	public void testReadThrowsException() throws StorableNotFoundException{
-		assertTrue(dao.read(6646).equals(null));
-	}
+//	
+//	@Test
+//	public void testReadThrowsException() throws StorableNotFoundException{
+//		assertTrue(dao.read(6646).equals(null));
+//	}
+	/*********************************************************************************/
 	
 //	@Test
 //	public void testUpdate(){
@@ -111,6 +112,12 @@ public class Request_DAO_JPA_Test {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+//	}
+//	
+//	@Test
+//	(expected=StorableNotFoundException.class)
+//	public  void testUpdateThrowsException() throws StorableNotFoundException{
+//		dao.update(request2, null);
 //	}
 	
 //	@Test
