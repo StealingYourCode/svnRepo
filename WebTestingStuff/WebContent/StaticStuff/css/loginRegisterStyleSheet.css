@@ -1,0 +1,40 @@
+@CHARSET "ISO-8859-1";
+
+#phoneImage {
+	position: absolute;
+	left: 920px;
+	top: 85px;
+}
+
+#call {
+	font-family: Arial;
+	color: #00aeef;
+	text-align: right;
+	position: absolute;
+	left: 950px;
+	top: 90px;
+}
+
+#logo {
+	position: absolute;
+	left: 10px;
+	top: 38px;
+}
+
+#loginButtons {
+	position: absolute;
+	left: 950px;
+	top: 130px;
+}
+
+#loginButton {
+	font-family: arial;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+#registerButton {
+	font-family: arial;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
