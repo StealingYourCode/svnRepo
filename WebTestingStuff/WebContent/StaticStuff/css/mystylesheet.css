@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-color:#CCCC2F;
+}
+
+div{
+	color:yellow;
+}
+
+.content p{
+	
+	text-align: center;
+	background-color: orange;
+}
+
+.myClass{
+	border-bottom: green;
+}
