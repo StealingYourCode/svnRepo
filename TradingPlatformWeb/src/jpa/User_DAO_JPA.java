@@ -21,7 +21,7 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 					throw new StorableNotFoundException("This user does not exist");
 
 				
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 				EntityManager em = emf.createEntityManager();
 				
@@ -37,7 +37,7 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 
 	public Person read(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -68,7 +68,7 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		if(olduser == null || newuser == null)
 			throw new StorableNotFoundException("This user does not exist");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -91,7 +91,7 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		// TODO Auto-generated method stub
 		User_DAO_JPA dao = new User_DAO_JPA();
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -113,7 +113,7 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 	// TODO Auto-generated method stub
 		
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 		EntityManager em = emf.createEntityManager();
 		Query query = em.createNativeQuery("SELECT * FROM PERSON WHERE USER_NAME = '" + username +"'" , Person.class);
 		try{

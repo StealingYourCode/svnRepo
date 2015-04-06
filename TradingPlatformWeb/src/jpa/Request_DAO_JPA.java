@@ -20,7 +20,7 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 					throw new StorableNotFoundException("This request does not exist");
 				
 				
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 				EntityManager em = emf.createEntityManager();
 				
@@ -37,7 +37,7 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 	@Override
 	public Request read(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -60,7 +60,7 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 		if(oldrequest == null || newrequest == null)
 			throw new StorableNotFoundException("This request does not exist");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -91,7 +91,7 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 		// TODO Auto-generated method stub
 		Request_DAO_JPA dao = new Request_DAO_JPA();
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		

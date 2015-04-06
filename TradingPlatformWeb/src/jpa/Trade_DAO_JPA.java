@@ -22,7 +22,7 @@ public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 					throw new StorableNotFoundException("This trade does not exist");
 
 				
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 				EntityManager em = emf.createEntityManager();
 				
@@ -39,7 +39,7 @@ public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 	@Override
 	public Trade read(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -63,7 +63,7 @@ public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 		if(oldtrade == null || newtrade == null)
 			throw new StorableNotFoundException("This request does not exist");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -96,7 +96,7 @@ public class Trade_DAO_JPA implements IStorage<Trade, Integer, Integer> {
 		
 		
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		

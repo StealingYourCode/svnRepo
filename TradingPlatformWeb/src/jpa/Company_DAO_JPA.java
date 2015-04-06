@@ -18,7 +18,7 @@ public class Company_DAO_JPA implements IStorage<Company, Integer, Integer> {
 					throw new StorableNotFoundException("This Company does not exist");
 				
 				
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 				EntityManager em = emf.createEntityManager();
 				
@@ -35,7 +35,7 @@ public class Company_DAO_JPA implements IStorage<Company, Integer, Integer> {
 	@Override
 	public Company read(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -58,7 +58,7 @@ public class Company_DAO_JPA implements IStorage<Company, Integer, Integer> {
 		if(oldcompany == null || newcompany == null)
 			throw new StorableNotFoundException("This company does not exist");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -81,7 +81,7 @@ public class Company_DAO_JPA implements IStorage<Company, Integer, Integer> {
 		// TODO Auto-generated method stub
 		Company_DAO_JPA dao = new Company_DAO_JPA();
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformProject1");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 
 		EntityManager em = emf.createEntityManager();
 		
