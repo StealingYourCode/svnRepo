@@ -19,7 +19,7 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		// TODO Auto-generated method stub
 				if(user==null)
 					throw new StorableNotFoundException("This user does not exist");
-
+				
 				
 				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 

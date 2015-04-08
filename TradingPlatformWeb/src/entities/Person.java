@@ -27,6 +27,9 @@ public class Person implements Serializable, IStorable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "PERSON_ID_SEQ")
+	@SequenceGenerator(name = "PERSON_ID_SEQ", sequenceName = "PERSON_ID_SEQ")
+
 	@Column(name="PERSON_ID")
 	private Integer personId;
 

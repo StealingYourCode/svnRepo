@@ -11,20 +11,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script
+	src ="/TradingPlatformWeb/StaticStuff/css/javascriptFunctions.js">
+</script>
 </head>
 <body>
 	<p>
 	<p>
 	<div id='mainImage'></div>
 	<p>
-		<img src="/TradingPlatformWeb/StaticStuff/images/logo-TP.jpg" name="logo"
-			width="200" height="120" id="logo" /> <img
+		<img src="/TradingPlatformWeb/StaticStuff/images/logo-TP.jpg"
+			name="logo" width="200" height="120" id="logo"
+			onclick="location.href='HomePage.html'" /> <img
 			src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQL68-9Si8PuglgXQqGJGGgzTY2a0YZyDovqpFW13guGG8AsrGkrQ"
 			name="phoneImage" width="28" height="24" align="right"
 			id="phoneImage" />
 	<p>
 	<div id='loginButtons'>
-		<button type="button" id='loginButton'>Login</button>
+		<button type="button" id='loginButton'
+			onclick="location.href='loginPage.html'">Login</button>
 		&nbsp&nbsp&nbsp
 		<button type="button" id='registerButton'>Register</button>
 	</div>
@@ -32,53 +37,56 @@
 	<div class="container">
 		<h2>Register</h2>
 		<div class="border">
-			<form role="form">
+			<form role="form" name="registerForm" action="../../Register"
+				method="post" onsubmit="return checkPasswordMatch()">
 				<div class="form-group">
 
-					<input type="First Name" class="form-control" id="username"
-						placeholder="First Name">
+					<input type="First Name" class="form-control" id="firstName"
+						name="firstName" placeholder="First Name">
 				</div>
 				<div class="form-group">
 
-					<input type="Last Name" class="form-control" id="pwd"
-						placeholder="Last Name">
+					<input type="Last Name" class="form-control" id="lastName"
+						name="lastName" placeholder="Last Name">
 				</div>
 				<div class="form-group">
 
-					<input type="Username" class="form-control" id="pwd"
-						placeholder="Username">
+					<input type="Username" class="form-control" id="username"
+						name="userName" placeholder="Username">
 				</div>
 				<div class="form-group">
 
-					<input type="Email" class="form-control" id="pwd"
+					<input type="Email" class="form-control" id="email"
 						placeholder="Email">
 				</div>
 				<div class="form-group">
 
-					<input type="Create a Password" class="form-control" id="pwd"
-						placeholder="Create a Password">
+					<input type="Create a Password" class="form-control" id="password"
+						name="password" placeholder="Create a Password">
 				</div>
 				<div class="form-group">
 
-					<input type="Confirm your password" class="form-control" id="pwd"
+					<input type="Confirm your password" class="form-control"
+						id="passwordConfirm" name="passwordConfirm"
 						placeholder="Confirm your password">
 				</div>
 				<div class="checkbox">
-					<label><input type="checkbox"> I accept TP's terms and conditions</label>
+					<label><input type="checkbox"> I accept TP's terms
+						and conditions</label>
 				</div>
-				<button type="submit" class="btn btn-default" id='submitButton1'>Register</button>
-				
-				
-				</div>
-			</form>
+				<button type="submit" class="btn btn-default" id='submitButton1'
+					>Register</button>
+				<p id="errorMessage"></p>
 		</div>
+		</form>
+	</div>
 	</div>
 
 	<hr id='line2'>
 	<div id='icons'>
 		<img id='facebook'
-			src="/TradingPlatformWeb/StaticStuff/images/facebookIcon.png" width="32"
-			height="28"> <img id='facebook'
+			src="/TradingPlatformWeb/StaticStuff/images/facebookIcon.png"
+			width="32" height="28"> <img id='facebook'
 			src="/TradingPlatformWeb/StaticStuff/images/twitter.jpg" width="32"
 			height="28"> <img id='facebook'
 			src="/TradingPlatformWeb/StaticStuff/images/linkedin.jpg" width="32"

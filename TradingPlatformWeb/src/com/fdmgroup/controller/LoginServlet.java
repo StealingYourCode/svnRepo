@@ -3,6 +3,7 @@ package com.fdmgroup.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,23 +42,37 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Person user = new Person();
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
 		
 		String uName = request.getParameter("Username");
 		String pWord = request.getParameter("Password");
 		
 		JPAUserActions login = new JPAUserActions();
+		request.setAttribute("thisUser", user);
+		
 		try {
 			 user = login.Login(uName, pWord);
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+//			RequestDispatcher rd = request.getRequestDispatcher("Login");
+//			rd.forward(request, response);
 		}
 		
-		out.print("<html><head><title></title></head><body>");
-
-		out.print(user.getFirstName()+" "+user.getLastName()+" has logged in.");
-		out.print("</body></html>");
+		
+		RequestDispatcher rd =request.getRequestDispatcher("welcome");
+		rd.forward(request, response);
+		
+//		if(user.getFirstName()!=null){
+//		out.print("<html><head><title></title></head><body>");
+//		out.print(user.getFirstName()+" "+user.getLastName()+" has logged in.");
+//		out.print("</body></html>");
+//		}
+//		else{
+//			out.print("<html><head><title></title></head><body>");
+//			out.print("Incorrect username or password");
+//			out.print("</body></html>");
+//		}
 
 	}
 

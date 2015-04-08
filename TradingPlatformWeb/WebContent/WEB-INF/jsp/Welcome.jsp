@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +14,8 @@
 <body>
 	<p>
 	<div id='mainImage'></div>
+	
+	
 	<p>
 		<img src="/TradingPlatformWeb/StaticStuff/images/logo-TP.jpg" name="logo"
 			width="200" height="120" id="logo" /> <img
@@ -28,6 +33,7 @@
 		<img src="/TradingPlatformWeb/StaticStuff/images/main.jpg" name="main"
 			width="1200" height="580" id="main" />
 	</p>
+	Hello ${thisUser.firstName } ${thisUser.lastName }
 	<div id='navBar'>
 		<ul>
 			<li id='homemenu'>Home
