@@ -54,7 +54,7 @@
   
    <servlet>
     <description></description>
-    <display-name>ViewRequestServlt</display-name>
+    <display-name>ViewRequestServlet</display-name>
     <servlet-name>ViewRequestServlet</servlet-name>
     <servlet-class>com.fdmgroup.controller.ViewRequestServlet</servlet-class>
   </servlet>
@@ -62,4 +62,18 @@
     <servlet-name>ViewRequestServlet</servlet-name>
     <url-pattern>/ViewRequest</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>TradeServlet</display-name>
+    <servlet-name>TradeServlet</servlet-name>
+    <servlet-class>com.fdmgroup.controller.TradeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TradeServlet</servlet-name>
+    <url-pattern>/ViewTrades</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
+

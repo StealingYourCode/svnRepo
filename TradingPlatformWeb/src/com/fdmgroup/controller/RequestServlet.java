@@ -63,6 +63,10 @@ public class RequestServlet extends HttpServlet {
 		if(limitOrStop.equals("Stop Order")){
 			newrequest.setStopPrice(price);
 		}
+		if(limitOrStop.equals("None")){
+			newrequest.setStopPrice(null);
+			newrequest.setLimitPrice(null);
+		}
 		
 		newrequest.setPerson( (Person) request.getSession().getAttribute("thisUser"));
 		newrequest.setBuySell(buyOrSell);

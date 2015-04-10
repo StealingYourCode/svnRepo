@@ -114,7 +114,7 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 		List<Request> requestList = new ArrayList<Request>();
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createNativeQuery("SELECT * FROM REQUEST WHERE SHAREHOLDER_ID = '" + id +"'", Request.class);
+		Query query = em.createNativeQuery("SELECT * FROM REQUEST WHERE SHAREHOLDER_ID = '" + id +"'  AND STATUS='ACTIVE'", Request.class);
 		
 		requestList = (ArrayList<Request>) query.getResultList();
 		return (ArrayList<Request>) requestList;
