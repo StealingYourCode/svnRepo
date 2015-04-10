@@ -47,7 +47,7 @@ public class RequestServlet extends HttpServlet {
 		Request_DAO_JPA action = new Request_DAO_JPA();
 		Request newrequest = new Request();
 		
-		BigDecimal price = new BigDecimal(request.getParameter("price"));
+//		BigDecimal price = new BigDecimal(request.getParameter("price"));
 		BigDecimal minimumShares = new BigDecimal(request.getParameter("minimumShares"));
 		BigDecimal shares = new BigDecimal(request.getParameter("shares"));
 		BigDecimal stockid = new BigDecimal(request.getParameter("stockid"));
@@ -58,10 +58,10 @@ public class RequestServlet extends HttpServlet {
 		String limitOrStop = request.getParameter("limitOrStop");
 		
 		if(limitOrStop.equals("Limit Order")){
-			newrequest.setLimitPrice(price);
+			newrequest.setLimitPrice(new BigDecimal(request.getParameter("price")));
 		}
 		if(limitOrStop.equals("Stop Order")){
-			newrequest.setStopPrice(price);
+			newrequest.setStopPrice(new BigDecimal(request.getParameter("price")));
 		}
 		if(limitOrStop.equals("None")){
 			newrequest.setStopPrice(null);

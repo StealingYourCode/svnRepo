@@ -60,6 +60,7 @@ public class RegisterServlet extends HttpServlet {
 		newUser.setLastName(lastName);
 		newUser.setPassword(password);
 		newUser.setUserName(userName);
+		
 
 		try {
 			register.read(userName);
