@@ -67,7 +67,7 @@
 	
 	<hr id='line2' width="1200">
 	<div id='secondText'>
-		<h1>Online Trading</h1>
+		<h1>Make a Request</h1>
 		Don't you want to be able to trade online? Well now you can, with the
 		magic of TP.
 		<button type="button" id='learnMoreButton2'>Learn more</button>

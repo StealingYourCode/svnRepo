@@ -1,9 +1,13 @@
 package jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import dao.IStorage;
 import dto.IStorable;
@@ -104,6 +108,16 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer>{
 		
 		em.close();
 		emf.close();
+	}
+	
+	public ArrayList<Request> readByUserId(Integer id){
+		List<Request> requestList = new ArrayList<Request>();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createNativeQuery("SELECT * FROM REQUEST WHERE SHAREHOLDER_ID = '" + id +"'", Request.class);
+		
+		requestList = (ArrayList<Request>) query.getResultList();
+		return (ArrayList<Request>) requestList;
 	}
 
 }

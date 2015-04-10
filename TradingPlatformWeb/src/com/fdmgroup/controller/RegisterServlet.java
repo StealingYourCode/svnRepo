@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException{
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		Person newUser = new Person();
@@ -53,45 +53,49 @@ public class RegisterServlet extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String password = request.getParameter("password");
-		String passwordConfirm = request.getParameter("passwordConfirm");
 
 		User_DAO_JPA register = new User_DAO_JPA();
 
-		
+		newUser.setFirstName(firstName);
+		newUser.setLastName(lastName);
+		newUser.setPassword(password);
+		newUser.setUserName(userName);
 
-				newUser.setFirstName(firstName);
-				newUser.setLastName(lastName);
-				newUser.setPassword(password);
-				newUser.setUserName(userName);
-				
-				try {
-					if (register.read(userName) != null) {
-						out.print("<html><head><title></title></head><body>");
-						out.print("This username already exists");
-						out.print("</body></html>");
-					}
-					else{
-					try {
-						register.create(newUser);
-					} catch (StorableNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+		try {
+			register.read(userName);
+			// TODO Auto-generated catch block
+			out.print("<html><head><title></title></head><body>");
+			out.print("This username already exists");
+			out.print("</body></html>");
+		} catch (StorableNotFoundException e) {
 
-					out.print("<html><head><title></title></head><body>");
-					out.print(userName + " has been created");
-					out.print("</body></html>");
-					}
-				} catch (StorableNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			try {
+				register.create(newUser);
+			} catch (StorableNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			out.print("<html><head><title></title></head><body>");
+			out.print(userName + " has been created");
+			out.print("</body></html>");
 
+		}
 
-				
+		// try {
+		//
+		// } catch (StorableNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// out.print("<html><head><title></title></head><body>");
+		// out.print("This username already exists");
+		// out.print("</body></html>");
+		// }
 
+		// else
+		// out.print("<html><head><title></title></head><body>");
+		// out.print("This username already exists");
+		// out.print("</body></html>");
+		// }
 
-
-		
 	}
 }

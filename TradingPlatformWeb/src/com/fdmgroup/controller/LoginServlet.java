@@ -22,57 +22,66 @@ import userManager.JPAUserActions;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public LoginServlet() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public LoginServlet() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Person user = new Person();
-//		PrintWriter out = response.getWriter();
-		
+		// PrintWriter out = response.getWriter();
+
 		String uName = request.getParameter("Username");
 		String pWord = request.getParameter("Password");
-		
+
 		JPAUserActions login = new JPAUserActions();
-		request.setAttribute("thisUser", user);
-		
+
 		try {
-			 user = login.Login(uName, pWord);
+			user = login.Login(uName, pWord);
+			request.getSession().setAttribute("thisUser", user);
+			RequestDispatcher rd = request.getRequestDispatcher("welcome");
+			rd.forward(request, response);
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-//			RequestDispatcher rd = request.getRequestDispatcher("Login");
-//			rd.forward(request, response);
+			request.setAttribute("thisUser", user);
+			RequestDispatcher rd = request.getRequestDispatcher("Login");
+			rd.forward(request, response);
 		}
 		
-		
-		RequestDispatcher rd =request.getRequestDispatcher("welcome");
-		rd.forward(request, response);
-		
-//		if(user.getFirstName()!=null){
-//		out.print("<html><head><title></title></head><body>");
-//		out.print(user.getFirstName()+" "+user.getLastName()+" has logged in.");
-//		out.print("</body></html>");
-//		}
-//		else{
-//			out.print("<html><head><title></title></head><body>");
-//			out.print("Incorrect username or password");
-//			out.print("</body></html>");
-//		}
+		if(user.getUserName().equals(null)){
+			request.setAttribute("thisUser", user);
+			RequestDispatcher rd = request.getRequestDispatcher("Login");
+			rd.forward(request, response);
+		}
+
+		// if(user.getFirstName()!=null){
+		// out.print("<html><head><title></title></head><body>");
+		// out.print(user.getFirstName()+" "+user.getLastName()+" has logged in.");
+		// out.print("</body></html>");
+		// }
+		// else{
+		// out.print("<html><head><title></title></head><body>");
+		// out.print("Incorrect username or password");
+		// out.print("</body></html>");
+		// }
 
 	}
 

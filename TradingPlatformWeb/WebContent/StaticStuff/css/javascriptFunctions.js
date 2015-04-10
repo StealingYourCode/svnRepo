@@ -25,3 +25,24 @@ function checkPasswordMatch() {
 // }
 
 }
+
+function checkFormNotEmpty(){
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	var errorText="";
+	
+	if(username=="" || password==""){
+		errorText+= "Enter a username and password";
+		document.getElementById("errorMessage").innerHTML = errorText;
+		return false;
+	}
+	
+	else 
+		return true;
+}
+
+function goToRequestPage(){
+	window.location="/WEB-INF/jsp/Request.jsp";
+	
+		
+}

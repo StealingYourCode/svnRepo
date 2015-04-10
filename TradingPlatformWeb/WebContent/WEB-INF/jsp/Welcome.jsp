@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +36,11 @@
 		<img src="/TradingPlatformWeb/StaticStuff/images/main.jpg" name="main"
 			width="1200" height="580" id="main" />
 	</p>
+	
+	<c:if test="${sessionScope.thisUser !=null }">
 	Hello ${thisUser.firstName } ${thisUser.lastName }
+	</c:if>
+	
 	<div id='navBar'>
 		<ul>
 			<li id='homemenu'>Home
@@ -54,9 +61,11 @@
 			name="round1" width="152" height="152" id="round1" />
 	<p>
 	<div id='firstText'>
-		<h1>Investment Products</h1>
+		<h1>View Requests</h1>
 		<p>Invest your money, don't store it under your bed.</p>
-		<button type="button" id='learnMoreButton1'>Learn more</button>
+		<form role="form" name="viewRequstForm" action="../../ViewRequest" method="post">
+		<button type="button" id='learnMoreButton1'>View</button>
+		</form>
 	</div>
 	<img src="/TradingPlatformWeb/StaticStuff/images/round-images3.png"
 		name="round3" width="152" height="152" align="right" id="round3" />
@@ -71,10 +80,11 @@
 	
 	<hr id='line2' width="1200">
 	<div id='secondText'>
-		<h1>Online Trading</h1>
+		<h1>Make a Request</h1>
 		Don't you want to be able to trade online? Well now you can, with the
 		magic of TP.
-		<button type="button" id='learnMoreButton2'>Learn more</button>
+		<a href="Request"><button type="button" id='learnMoreButton2' >Request</button>
+		</a>
 	</div>
 
 	<div id='thirdText'>
@@ -95,6 +105,7 @@
 		<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Manage your
 			investments in your own time.</p>
 		<button type="button" id='makeAccountButton' onclick="location.href='RegisterPage.html'">OPEN AN ACCOUNT</button>
+		
 	</div>
 	<hr id='line3'>
 	<div id='icons'>

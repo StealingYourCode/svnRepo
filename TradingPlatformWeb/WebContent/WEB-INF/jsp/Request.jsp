@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,8 +43,8 @@
 				onsubmit="return checkFormNotEmpty()">
 				<div class="form-group">
 
-					<input type="text" class="form-control" id="username"
-						name="Username" placeholder="Username">
+					<input type="text" class="form-control" id="buyOrSell"
+						name="buyOrSell" placeholder="buyOrSell">
 				</div>
 				<div class="form-group">
 
