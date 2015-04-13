@@ -65,6 +65,17 @@
   
   <servlet>
     <description></description>
+    <display-name>ViewRequestUserInterface</display-name>
+    <servlet-name>ViewRequestUserInterface</servlet-name>
+    <jsp-file>/WEB-INF/jsp/ViewRequest.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewRequestUserInterface</servlet-name>
+    <url-pattern>/ViewRequestUI</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
     <display-name>TradeServlet</display-name>
     <servlet-name>TradeServlet</servlet-name>
     <servlet-class>com.fdmgroup.controller.TradeServlet</servlet-class>

@@ -61,16 +61,20 @@ public class LoginServlet extends HttpServlet {
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			request.setAttribute("thisUser", user);
-			RequestDispatcher rd = request.getRequestDispatcher("Login");
-			rd.forward(request, response);
+//			request.setAttribute("thisUser", user);
+//			RequestDispatcher rd = request.getRequestDispatcher("Login");
+//			rd.forward(request, response);
+			PrintWriter out = response.getWriter();
+			out.print("<html><head><title></title></head><body>");
+			out.print("Incorrect username or password");
+			out.print("</body></html>");
 		}
-		
-		if(user.getUserName().equals(null)){
-			request.setAttribute("thisUser", user);
-			RequestDispatcher rd = request.getRequestDispatcher("Login");
-			rd.forward(request, response);
-		}
+
+//		if (user.getUserName().equals(null)) {
+//			request.setAttribute("thisUser", user);
+//			RequestDispatcher rd = request.getRequestDispatcher("Login");
+//			rd.forward(request, response);
+//		}
 
 		// if(user.getFirstName()!=null){
 		// out.print("<html><head><title></title></head><body>");
@@ -78,6 +82,7 @@ public class LoginServlet extends HttpServlet {
 		// out.print("</body></html>");
 		// }
 		// else{
+		// PrintWriter out = response.getWriter();
 		// out.print("<html><head><title></title></head><body>");
 		// out.print("Incorrect username or password");
 		// out.print("</body></html>");

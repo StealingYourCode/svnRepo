@@ -1,10 +1,10 @@
 package com.fdmgroup.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +42,7 @@ public class RequestServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		//IAction request_DAO_action = Factory.getAction("request");
 		Request_DAO_JPA action = new Request_DAO_JPA();
 		Request newrequest = new Request();
 		
@@ -77,22 +76,15 @@ public class RequestServlet extends HttpServlet {
 		newrequest.setTimeInForce(timeInForce);
 		newrequest.setRequestDate(Calendar.getInstance().getTime());
 		
-		PrintWriter out = response.getWriter();
 
 		try {
 			action.create(newrequest);
-			out.print("<html><head><title></title></head><body>");
-			out.print("The request has been completed");
-			out.print("</body></html>");
 		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			out.print("<html><head><title></title></head><body>");
-			out.print("Request failed");
-			out.print("</body></html>");
 		}
 		
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("welcome");
+		dispatcher.forward(request, response);
 		
 		
 	}

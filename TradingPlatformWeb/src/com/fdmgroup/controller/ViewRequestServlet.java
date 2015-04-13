@@ -5,11 +5,15 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fdmgroup.factory.DAOFactory;
+import com.fdmgroup.factory.DAOFactory.daoType;
 
 import jpa.Request_DAO_JPA;
 import entities.Person;
@@ -18,7 +22,7 @@ import entities.Request;
 /**
  * Servlet implementation class ViewRequestServlet
  */
-// @WebServlet("/ViewRequestServlet")
+ @WebServlet("/ViewRequestServlet")
 public class ViewRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,38 +52,22 @@ public class ViewRequestServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		Request_DAO_JPA viewRequest = new Request_DAO_JPA();
+//		viewRequest = DAOFactory.daoFactory(daoType.REQUESTDAO);
 		Person person = new Person();
 		List<Request> requestList;
 
 		person = (Person) request.getSession().getAttribute("thisUser");
 
-		requestList = viewRequest.readByUserId(person.getPersonId());
+		requestList = viewRequest.readByUserId(person.getPersonId()); //Cannot use a factory because readByUserId is not part of the IStorage interface
 
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
+		
+		request.getSession().setAttribute("thisRequestList", requestList);
+		RequestDispatcher rd = request.getRequestDispatcher("ViewRequestUI");
+		rd.forward(request, response);
 
-		if (requestList.size() == 0) {
-			out.print("<html><head><title></title></head><body>");
-			out.print("You have no requests");
-			out.print("</body></html>");
-		}
 
-		out.print("<html><head><title></title></head><body>");
-		for (Request result : requestList) {
-			out.print("Stock ID: " + result.getStockId() + " Status: "
-					+ result.getStatus() + " Time-in-Force: "
-					+ result.getTimeInForce() + " Buy Or Sell:  "
-					+ result.getBuySell() + " Minimum Shares: "
-					+ result.getMinimumShares() + "  Request Date: "
-					+ result.getRequestDate() + " Number of Shares:  "
-					+ result.getShares() + " Shares Filled: "
-					+ result.getSharesFilled() + " Stop Price: " + result.getStopPrice()
-					 + " Limit Price: " + result.getLimitPrice());
 
-			out.println("<br>");
-
-		}
-		// out.print("The request has been completed");
-		out.print("</body></html>");
 
 	}
 }
