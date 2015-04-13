@@ -74,16 +74,17 @@
     <url-pattern>/ViewRequestUI</url-pattern>
   </servlet-mapping>
   
-  <servlet>
+   <servlet>
     <description></description>
     <display-name>TradeServlet</display-name>
     <servlet-name>TradeServlet</servlet-name>
-    <servlet-class>com.fdmgroup.controller.TradeServlet</servlet-class>
+    <jsp-file>/WEB-INF/jsp/ViewTrades.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>TradeServlet</servlet-name>
     <url-pattern>/ViewTrades</url-pattern>
   </servlet-mapping>
+ 
   
   
 </web-app>

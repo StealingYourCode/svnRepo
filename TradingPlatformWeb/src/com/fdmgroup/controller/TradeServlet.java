@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,27 +55,31 @@ public class TradeServlet extends HttpServlet {
 		person = (Person) request.getSession().getAttribute("thisUser");
 
 		tradeList = viewTrades.readTradeByShareholderId(person.getPersonId());
-		PrintWriter out = response.getWriter();
-
-		if (tradeList.size() == 0) {
-			out.print("<html><head><title></title></head><body>");
-			out.print("You have no trade history");
-			out.print("</body></html>");
-		}
-
-		out.print("<html><head><title></title></head><body>");
-		for (Trade trade : tradeList) {
-			out.print("Stock ID: " + trade.getStockId() + " Transaction Time: "
-					+ trade.getTransactionTime() + " Number of Shares: "
-					+ trade.getShares() + " Share Price: "
-					+ trade.getSharePrice() + " Buyer: "
-					+ trade.getPerson1().getUserName() + " Seller: "
-					+ trade.getPerson2().getUserName());
-			
-			out.print("<br>");
-		}
 		
-		out.print("</body></html>");
+		request.getSession().setAttribute("thisTradeList", tradeList);
+		RequestDispatcher rd = request.getRequestDispatcher("ViewTrades");
+		rd.forward(request, response);
+//		PrintWriter out = response.getWriter();
+//
+//		if (tradeList.size() == 0) {
+//			out.print("<html><head><title></title></head><body>");
+//			out.print("You have no trade history");
+//			out.print("</body></html>");
+//		}
+//
+//		out.print("<html><head><title></title></head><body>");
+//		for (Trade trade : tradeList) {
+//			out.print("Stock ID: " + trade.getStockId() + " Transaction Time: "
+//					+ trade.getTransactionTime() + " Number of Shares: "
+//					+ trade.getShares() + " Share Price: "
+//					+ trade.getSharePrice() + " Buyer: "
+//					+ trade.getPerson1().getUserName() + " Seller: "
+//					+ trade.getPerson2().getUserName());
+//			
+//			out.print("<br>");
+//		}
+//		
+//		out.print("</body></html>");
 
 	}
 }
