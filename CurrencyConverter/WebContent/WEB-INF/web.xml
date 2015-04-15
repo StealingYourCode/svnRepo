@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>CurrencyConverter</display-name>
+  <welcome-file-list>
+    <welcome-file>/Converter.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ConverterServlet</display-name>
+    <servlet-name>ConverterServlet</servlet-name>
+    <servlet-class>com.fdmgroup.servlets.ConverterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConverterServlet</servlet-name>
+    <url-pattern>/ConverterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Converter</servlet-name>
+    <jsp-file>/Converter.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Converter</servlet-name>
+    <url-pattern>/Converter</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+    <listener-class>com.fdmgroup.servlets.CurrencyStartupListener</listener-class>
+  </listener>
+  <servlet-mapping>
+    <servlet-name>Converter</servlet-name>
+    <url-pattern>/Converter</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
