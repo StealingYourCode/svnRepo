@@ -37,12 +37,12 @@ public class ConverterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DOMParser parser = new DOMParser();
-		ArrayList<String> names = parser.ParseXMLGetCurrencyNames();
-		
-		request.setAttribute("thisNameList", names);
-		RequestDispatcher rd = request.getRequestDispatcher("Converter");
-		rd.forward(request, response);
+//		DOMParser parser = new DOMParser();
+//		ArrayList<String> names = parser.ParseXMLGetCurrencyNames();
+//		
+//		request.setAttribute("thisNameList", names);
+//		RequestDispatcher rd = request.getRequestDispatcher("Converter");
+//		rd.forward(request, response);
 		
 	}
 

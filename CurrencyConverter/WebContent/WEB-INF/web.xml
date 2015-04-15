@@ -4,7 +4,8 @@
   <welcome-file-list>
     <welcome-file>/Converter.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+  
+    <servlet>
     <description></description>
     <display-name>ConverterServlet</display-name>
     <servlet-name>ConverterServlet</servlet-name>
@@ -13,7 +14,7 @@
   <servlet-mapping>
     <servlet-name>ConverterServlet</servlet-name>
     <url-pattern>/ConverterServlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>  
   <servlet>
     <servlet-name>Converter</servlet-name>
     <jsp-file>/Converter.jsp</jsp-file>
@@ -26,9 +27,4 @@
   <listener>
     <listener-class>com.fdmgroup.servlets.CurrencyStartupListener</listener-class>
   </listener>
-  <servlet-mapping>
-    <servlet-name>Converter</servlet-name>
-    <url-pattern>/Converter</url-pattern>
-  </servlet-mapping>
-  
 </web-app>

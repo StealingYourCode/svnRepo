@@ -18,17 +18,18 @@
 <body>
 
 	<div class="border">
-		<form role="form">
+	
+		<c:if test="${applicationScope.thisNameList !=null }">
+			<form role="form" name="ConvertForm" action="/Converter" method="post">
 
 			<div class="form-group">
 
-				<label for="sel1">Choose currency to convert from:</label> <select
+				<!--  <label for="sel1">Choose currency to convert from:</label> <select
 					class="form-control" id="selectFrom" name="convertFrom">
-					<c:forEach var="thisName" items="${applicationScope.thisNameList }">
-					
-					<option>${thisName }</option>
-					
-					</c:forEach>
+				<c:forEach var="thisName" items="${applicationScope.thisNameList }">
+				<option>${ thisName}</option>
+				</c:forEach>
+					-->
 				</select>
 			</div>
 
@@ -36,11 +37,8 @@
 
 				<label for="sel1">Choose currency to convert to:</label> <select
 					class="form-control" id="selectTo" name="convertTo">
-					<c:forEach var="thisName" items="${applicationScope.thisNameList }">
 					
-					<option>${thisName }</option>
 					
-					</c:forEach>
 				</select>
 			</div>
 
@@ -57,6 +55,7 @@
 				<button type="submit" class="btn btn-default" id='submitButton1'>Convert</button>
 			</div>
 		</form>
+		</c:if>
 	</div>
 
 </body>
