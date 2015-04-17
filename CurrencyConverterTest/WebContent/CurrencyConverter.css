@@ -1,0 +1,31 @@
+@CHARSET "ISO-8859-1";
+
+.border{
+	padding: 15px;
+	border-style: solid;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-width: thin;
+	text-align: center;
+	width: 700px;
+}
+
+#selectFrom{
+	float: right;
+	width: 300px;
+}
+
+#selectTo{
+	float: right;
+	width: 300px;
+}
+
+#fromInput{
+	width: 500px;
+	float: right;
+}
+
+.submitButton{
+	position: relative;
+	color: green;
+}
