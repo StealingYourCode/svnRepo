@@ -8,6 +8,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
+
+import com.fdmgroup.singleton.EMFSingleton;
 
 import dao.IStorage;
 import dto.IStorable;
@@ -22,32 +25,46 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer> {
 		if (request == null)
 			throw new StorableNotFoundException("This request does not exist");
 
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("TradingPlatformWeb");
+//		EntityManagerFactory emf = Persistence
+//				.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
+		
 
 		em.getTransaction().begin();
 		em.persist(request);
 		em.getTransaction().commit();
 
-		em.close();
-		emf.close();
+		StoredProcedureQuery storedProcedure = em.createStoredProcedureQuery("Request_Pkg.ProcessRequests");
+		
+		em.getTransaction().begin();
+		storedProcedure.executeUpdate();
+		em.getTransaction().commit();
+		
+//		em.close();
+//		emf.close();
+		
+		
+		
 		return request;
 	}
 
 	@Override
 	public Request read(Integer id) throws StorableNotFoundException {
-		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("TradingPlatformWeb");
-
+//		EntityManagerFactory emf = Persistence
+//				.createEntityManagerFactory("TradingPlatformWeb");
+		
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
+//		EntityManager em = EMFSingleton.getInstance();
+		
+
 
 		try {
 			Request result = em.find(Request.class, id);
 
-			em.close();
-			emf.close();
+//			em.close();
+//			emf.close();
 			return result;
 
 		} catch (NoResultException e) {
@@ -62,10 +79,14 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer> {
 		if (oldrequest == null || newrequest == null)
 			throw new StorableNotFoundException("This request does not exist");
 
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("TradingPlatformWeb");
-
+//		EntityManagerFactory emf = Persistence
+//				.createEntityManagerFactory("TradingPlatformWeb");
+//
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
+		
+//		EntityManager em = EMFSingleton.getInstance();
+
 
 		Request result = em.find(Request.class, oldrequest.getRequestId());
 
@@ -73,7 +94,7 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer> {
 		updateResultObj(result,newrequest);
 		em.getTransaction().commit();
 
-		emf.close();
+//		emf.close();
 	}
 
 	private void updateResultObj(Request managedRequest, Request newrequest){
@@ -95,10 +116,13 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer> {
 		// TODO Auto-generated method stub
 		Request_DAO_JPA dao = new Request_DAO_JPA();
 
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("TradingPlatformWeb");
-
+//		EntityManagerFactory emf = Persistence
+//				.createEntityManagerFactory("TradingPlatformWeb");
+//
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
+//		EntityManager em = EMFSingleton.getInstance();
+
 
 		if (em.find(Request.class, id) == null)
 			throw new StorableNotFoundException("This request does not exist");
@@ -107,15 +131,19 @@ public class Request_DAO_JPA implements IStorage<Request, Integer, Integer> {
 		em.remove(em.find(Request.class, id));
 		em.getTransaction().commit();
 
-		em.close();
-		emf.close();
+//		em.close();
+//		emf.close();
 	}
 
 	public ArrayList<Request> readByUserId(Integer id) {
 		List<Request> requestList = new ArrayList<Request>();
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("TradingPlatformWeb");
+//		EntityManagerFactory emf = Persistence
+//				.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
+		
+//		EntityManager em = EMFSingleton.getInstance();
+
 		Query query = em.createNativeQuery(
 				"SELECT * FROM REQUEST WHERE SHAREHOLDER_ID = '" + id
 						+ "'  AND STATUS='ACTIVE'", Request.class);

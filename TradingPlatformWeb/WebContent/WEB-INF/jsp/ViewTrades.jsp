@@ -28,7 +28,7 @@
 			id="phoneImage" />
 	</p>
 
-	<c:if test="${sessionScope.thisTradeList !=null }">
+	
 	Hello ${thisUser.firstName } ${thisUser.lastName }
 	
 	<c:forEach var="thisTrade" items="${sessionScope.thisTradeList }">
@@ -40,7 +40,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion"
-									href="#collapse${thisTrade.tradeId }">Request ID: ${thisRequest.requestId }</a>
+									href="#collapse${thisTrade.tradeId }">Trade ID: ${thisTrade.TradeId }</a>
 							</h4>
 						</div>
 						<div id="collapse${thisTrade.tradeId }" class="panel-collapse collapse in">
@@ -53,6 +53,5 @@
 			</div>
 		</c:forEach>
 
-	</c:if>
 </body>
 </html>

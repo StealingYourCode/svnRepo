@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.fdmgroup.singleton.EMFSingleton;
+
 import dao.IStorage;
 import dto.IStorable;
 import entities.Person;
@@ -21,7 +23,8 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 					throw new StorableNotFoundException("This user does not exist");
 				
 				
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+//				EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+				EntityManagerFactory emf = EMFSingleton.getInstance();
 
 				EntityManager em = emf.createEntityManager();
 				
@@ -30,22 +33,23 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 				em.getTransaction().commit();
 				
 				
-				em.close();
-				emf.close();
+//				em.close();
+//				emf.close();
 				return user;
 	}
 
 	public Person read(Integer id) throws StorableNotFoundException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 
 		EntityManager em = emf.createEntityManager();
 		
 		try{
 		Person result = em.find(Person.class, id);
 		
-		em.close();
-		emf.close();
+//		em.close();
+//		emf.close();
 		return result;
 		
 		}catch (NoResultException e){
@@ -68,7 +72,8 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		if(olduser == null || newuser == null)
 			throw new StorableNotFoundException("This user does not exist");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -81,8 +86,8 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		result.setUserName(newuser.getUserName());
 		em.getTransaction().commit();
 		
-		em.close();
-		emf.close();
+//		em.close();
+//		emf.close();
 		
 	}
 
@@ -91,7 +96,8 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		// TODO Auto-generated method stub
 		User_DAO_JPA dao = new User_DAO_JPA();
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 
 		EntityManager em = emf.createEntityManager();
 		
@@ -102,8 +108,8 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 		em.remove(em.find(Person.class, id));
 		em.getTransaction().commit();
 		
-		em.close();
-		emf.close();
+//		em.close();
+//		emf.close();
 		
 		// TODO Auto-generated method stub
 	}
@@ -113,8 +119,10 @@ public class User_DAO_JPA implements IStorage<Person, String, Integer> {
 	// TODO Auto-generated method stub
 		
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TradingPlatformWeb");
+		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
+		
 		Query query = em.createNativeQuery("SELECT * FROM PERSON WHERE USER_NAME = '" + username +"'" , Person.class);
 		try{
 		Person result = (Person) query.getSingleResult();

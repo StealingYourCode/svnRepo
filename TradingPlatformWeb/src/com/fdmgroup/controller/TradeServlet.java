@@ -59,6 +59,7 @@ public class TradeServlet extends HttpServlet {
 		request.getSession().setAttribute("thisTradeList", tradeList);
 		RequestDispatcher rd = request.getRequestDispatcher("ViewTrades");
 		rd.forward(request, response);
+		
 //		PrintWriter out = response.getWriter();
 //
 //		if (tradeList.size() == 0) {
