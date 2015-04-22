@@ -29,3 +29,9 @@
 	position: relative;
 	color: green;
 }
+
+#body{
+	position:absolute;
+	top: 200px;
+	left: 300px;
+}

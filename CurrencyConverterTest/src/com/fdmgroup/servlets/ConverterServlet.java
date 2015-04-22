@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.fdmgroup.dao.CurrencyDAO;
 import com.fdmgroup.xmlparser.DOMParser;
 import com.fdmgroup.singleton.*;
@@ -25,47 +28,46 @@ import com.fdmgroup.singleton.*;
         )
 public class ConverterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	ApplicationContext context = new ClassPathXmlApplicationContext("file:H:/JAVA/workspace/CurrencyConverterTest/src/com/fdmgroup/tests/Beans.xml");
+
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ConverterServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		 TODO Auto-generated method stub
-		CurrencyDAO dao = new CurrencyDAO();
+
+		CurrencyDAO dao = (CurrencyDAO) context.getBean("currencyDAO");
 		
 		String from = request.getParameter("convertFrom");
 		String to = request.getParameter("convertTo");
 		
 		double input =  Double.parseDouble(request.getParameter("fromInput"));
 		
-		BigDecimal fromCurrency = dao.read(from).getConversionRate();
-		BigDecimal toCurrency = dao.read(to).getConversionRate();
+		double fromCurrency = dao.read(from).getConversionRate().doubleValue();
+		double toCurrency = dao.read(to).getConversionRate().doubleValue();
 		
-		
-		
-		double result1 = fromCurrency.divide(toCurrency).doubleValue();
-		double result = result1*input;
+		double result1 =  (toCurrency/fromCurrency)*100;
+		double result = Math.round((result1*input))/100;
 		
 		request.setAttribute("result", result);
-		RequestDispatcher rd = request.getRequestDispatcher("/Converter");
+		RequestDispatcher rd = request.getRequestDispatcher("/test.jsp");
 		rd.forward(request, response);
 		
-				
 	}
 
 }

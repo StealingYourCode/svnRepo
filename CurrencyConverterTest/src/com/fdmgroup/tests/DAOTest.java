@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -16,17 +17,21 @@ import com.fdmgroup.xmlparser.DOMParser;
 public class DAOTest {
 	DOMParser parser = new DOMParser();
 	CurrencyDAO dao = new CurrencyDAO();
-	ArrayList<Currency> currencyList = parser.parseXMLFile();
-	ArrayList<String> names = parser.ParseXMLGetCurrencyNames();
+//	ArrayList<Currency> currencyList = parser.parseXMLFile();
+//	ArrayList<String> names = parser.ParseXMLGetCurrencyNames();
+	ArrayList<Date> dateList;
+//	ArrayList<Currency> ninetydays = parser.parseXMLFile90days();
 //
-//	@Before
-//	public void setUp() {
-//
-//	}
+	@Before
+	public void setUp() {
+		 dateList = parser.ParserXMLGetDates();
+
+	}
 //	@Ignore
 //	@Test
 //	public void testParseXMLFileReturnsCorrectListSize() {
-//		assertTrue(currencyList.size() == 31);
+////		assertTrue(currencyList.size() == 31);
+//		System.out.println(currencyList.size());
 //	}
 //
 //	@Ignore
@@ -38,18 +43,27 @@ public class DAOTest {
 //	}
 
 //	@Ignore
-	@Test
-	public void createFirstPersist() {
-		for (Currency currency : currencyList) {
-			dao.create(currency);
-		}
-	}
+//	@Test
+//	public void createFirstPersist90days() {
+////		for(Currency currency: ninetydays)
+//		dao.create(ninetydays);
+//	}
+	
+//	@Test
+//	public void createFirstPersist(){
+////		for(Currency currency: currencyList)
+//			dao.create(currencyList);
+//	}
 //	
 //	@Ignore
 //	@Test
 //	public void testArrayListOfNames(){
-//		for(String name : names)
+//		int count =0;
+//		for(String name : names){
 //			System.out.println(name);
+//			count++;
+//			System.out.println(count);
+//		}
 //	}
 //	
 //	@Ignore
@@ -57,13 +71,29 @@ public class DAOTest {
 //	public void testingListener(){
 //		DOMParser parser = new DOMParser();
 //		ArrayList<String> names = parser.ParseXMLGetCurrencyNames();
-//		for(String name: names)
+//		int count=0;
+//		for(String name: names){
 //		System.out.println(name);
+//		count++; System.out.println(count);
+//		}
 //	}
+	
 	
 //	@Ignore
 //	@Test
 //	public void testRead(){
-//		assertTrue(dao.read("RUB").getConversionRate()==new BigDecimal(54.94));
+//		assertTrue(dao.read("RUB").getConversionRate().doubleValue()==54.94);
+////		System.out.println(dao.read("RUB").getConversionRate().doubleValue());
 //	}
+	
+//	@Test
+//	public void testAverageCurrencyQuery(){
+//		System.out.println(dao.avgCurrency("USD"));
+//	}
+	
+	@Test
+	public void testDateList(){
+//		assertTrue(dateList.size()==90);
+		System.out.println(dateList.size());
+	}
 }

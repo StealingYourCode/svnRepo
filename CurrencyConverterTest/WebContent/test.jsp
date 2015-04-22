@@ -19,7 +19,7 @@
 <body>
 
 
-
+<div id='body'>
 
     
 	<div class="border">
@@ -49,6 +49,18 @@
 					</c:forEach>
 				</select>
 			</div>
+			
+			<div class="form-group">
+
+	<!--  		<label for="sel1">Select the date:</label> <select
+					class="form-control" id="selectTo" name="convertTo">
+					<c:forEach var="thisDate"
+						items="${dateList }">
+
+						<option>${thisDate }</option>
+					</c:forEach>
+				</select>
+			</div> -->	
 
 			<div class="form-group">
 				<label for="sel1">Enter the amount:</label> <input
@@ -63,13 +75,12 @@
 				<button type="submit" class="btn btn-default" id='submitButton1'>Convert</button>
 			</div>
 			
-			
 		</form>
 		
 		${result }
 	</div>
 	
 
-
+</div>
 </body>
 </html>

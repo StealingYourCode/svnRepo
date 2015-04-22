@@ -26,10 +26,12 @@ public class DOMParser {
 	Document dom;
 	List<Currency> currencyList = new ArrayList<Currency>();
 	List<String> names = new ArrayList<String>();
+	List<Date> dateList = new ArrayList<Date>();
 	
 	Date date;
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
 	File fXmlFile = new File("H:/JAVA/workspace/CurrencyConverterTest/ConversionRates.xml");
+	File ninetydays = new File("H:/JAVA/workspace/CurrencyConverterTest/ConversionRates90days.xml");
 
 
 	public ArrayList<Currency> parseXMLFile() {
@@ -116,5 +118,92 @@ public class DOMParser {
 			e.printStackTrace();
 		}
 		return (ArrayList<String>) names;
+	}
+	
+	public ArrayList<Currency> parseXMLFile90days() {
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(ninetydays);
+		
+		
+
+		doc.getDocumentElement().normalize();
+
+		NodeList nlist = doc.getElementsByTagName("Cube");
+
+		for (int i = 0; i < nlist.getLength(); i++) {
+			Node node = nlist.item(i);
+
+			if(node.getAttributes().getNamedItem("time")!=null){
+				date= formatter.parse(node.getAttributes().getNamedItem("time").toString().substring(6,16));
+			}
+			
+			if (node.getNodeType() == node.ELEMENT_NODE) {
+				Element element = (Element) node;
+				if (element.getAttribute("currency") != "" && element.getAttribute("rate") !="") {
+					 Currency currency = new Currency();
+					 currency.setConversionRate(new BigDecimal(element.getAttribute("rate")));
+					 currency.setCurrencyName((element.getAttribute("currency")));
+					 currency.setCurrencyDate(date);
+					 currencyList.add(currency);
+
+				}
+			}
+		}
+		
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (ArrayList<Currency>) currencyList;
+	}
+	
+	public ArrayList<Date> ParserXMLGetDates(){
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(fXmlFile);
+		
+		
+
+		doc.getDocumentElement().normalize();
+
+		NodeList nlist = doc.getElementsByTagName("Cube");
+
+		for (int i = 0; i < nlist.getLength(); i++) {
+			Node node = nlist.item(i);
+
+			if(node.getAttributes().getNamedItem("time")!=null){
+				date= formatter.parse(node.getAttributes().getNamedItem("time").toString().substring(6,16));
+			}
+				dateList.add(date);
+			
+		}
+		
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return (ArrayList<Date>) dateList;
 	}
 }
